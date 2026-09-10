@@ -29,12 +29,9 @@
 }
 
 
-/* =========================================================
-   HTML / BODY
-   ========================================================= */
-
-html {
-  scroll-behavior: smooth;
+/* HTML / BODY */
+html{
+  
 }
 
 body {
@@ -341,16 +338,22 @@ h6 {
 
 .hero-link {
   color: var(--text-main);
-  font-weight: 500;
+  font-weight: 600;
   text-decoration: none;
-
   display: inline-flex;
   align-items: center;
-  gap: 5px;
+  gap: 8px;
+  /* Novas propriedades para criar o Ghost Button */
+  padding: 14px 24px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  transition: var(--transition);
 }
 
 .hero-link:hover {
-  color: #f7c533;
+  color: var(--bg-black);
+  background-color: var(--accent-gold);
+  border-color: var(--accent-gold);
 }
 
 
@@ -1037,4 +1040,45 @@ h6 {
   .lawyer-photo {
     transform: none !important;
   }
+}
+/* =========================================================
+   MELHORIAS DE UI / UX
+   ========================================================= */
+
+/* Estilo do novo menu de navegação */
+.main-nav ul {
+    display: flex;
+    gap: 30px;
+    list-style: none;
+}
+
+.main-nav a {
+    color: var(--text-main);
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.main-nav a:hover {
+    color: var(--accent-gold);
+}
+
+/* Ocultar texto do botão do topo e menu em telas pequenas */
+@media (max-width: 768px) {
+    .main-nav {
+        display: none; /* Esconde os links no mobile para não poluir */
+    }
+    
+    .whatsapp-btn-header .btn-text {
+        display: none; /* Esconde o texto "Atendimento Rápido" */
+    }
+    
+    .whatsapp-btn-header {
+        padding: 10px;
+        border-radius: 50%; /* Transforma o botão em uma bolinha */
+        width: 42px;
+        height: 42px;
+        justify-content: center;
+    }
 }
