@@ -6,20 +6,45 @@ document.addEventListener("DOMContentLoaded", () => {
     button.setAttribute("href", WHATSAPP_LINK);
   });
 
-  // ---- Header que altera suavemente ao rolar e reaparece ao voltar ao topo ----
+  // ---- Header que some suavemente ao rolar e reaparece ao voltar ao topo ----
   const header = document.querySelector(".site-header");
 
   if (header) {
-    // Escuta o evento de rolagem da janela
-    window.addEventListener('scroll', () => {
-      // Verifica a quantidade de pixels que a página rolou para baixo
-      if (window.scrollY > 50) {
-        // Se rolou mais de 50 pixels, adiciona a classe
-        header.classList.add('header-scrolled');
-      } else {
-        // Se voltou para o topo (menos de 50px), remove a classe
-        header.classList.remove('header-scrolled');
-      }
-    });
+    // Distância de scroll (em px) até o header ficar totalmente transparente
+    const FADE_DISTANCE = 220;
+    // Opacidade mínima (não deixamos ir a 0 puro, para não "sumir" de forma abrupta)
+    const MIN_OPACITY = 0;
+
+    let ticking = false;
+
+    const updateHeaderOpacity = () => {
+      const scrollY = window.scrollY || window.pageYOffset;
+
+      // Calcula a opacidade proporcional ao quanto já rolou a página
+      let opacity = 1 - scrollY / FADE_DISTANCE;
+      opacity = Math.max(MIN_OPACITY, Math.min(1, opacity));
+
+      header.style.opacity = opacity;
+
+      // Evita que o header capture cliques quando estiver praticamente invisível
+      header.classList.toggle("is-faded", opacity < 0.05);
+
+      ticking = false;
+    };
+
+    // requestAnimationFrame evita recalcular a opacidade mais vezes do que o necessário
+    window.addEventListener(
+      "scroll",
+      () => {
+        if (!ticking) {
+          window.requestAnimationFrame(updateHeaderOpacity);
+          ticking = true;
+        }
+      },
+      { passive: true }
+    );
+
+    // Garante o estado correto caso a página já carregue com scroll (ex: F5 no meio da página)
+    updateHeaderOpacity();
   }
 });
