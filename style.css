@@ -29,9 +29,12 @@
 }
 
 
-/* HTML / BODY */
-html{
-  
+/* =========================================================
+   HTML / BODY
+   ========================================================= */
+
+html {
+  /* Scroll-behavior removido para o JS controlar a velocidade suavemente */
 }
 
 body {
@@ -75,26 +78,45 @@ h6 {
    ========================================================= */
 
 .site-header {
-  background-color: rgba(5, 5, 5, 0.3); /* Reduzido de 0.85 para 0.6 para mais transparência */
-  backdrop-filter: blur(12px);
+  background-color: rgba(5, 5, 5, 0.9);
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);
   position: sticky;
   top: 0;
   z-index: 1000;
   padding: 15px 0;
-  opacity: 1;
-  transition: opacity 0.25s ease-out;
-  will-change: opacity;
+  transition: background-color 0.4s ease, padding 0.4s ease, border-bottom 0.4s ease, backdrop-filter 0.4s ease;
 }
 
-.site-header.is-faded {
-  pointer-events: none;
+.site-header.header-scrolled {
+  background-color: rgba(5, 5, 5, 0.4);
+  padding: 8px 0;
+  border-bottom: 1px solid transparent;
+  backdrop-filter: blur(12px);
 }
 
 .header-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+/* NOVO MENU NAV */
+.main-nav ul {
+    display: flex;
+    gap: 30px;
+    list-style: none;
+}
+
+.main-nav a {
+    color: var(--text-main);
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.main-nav a:hover {
+    color: var(--accent-gold);
 }
 
 
@@ -117,18 +139,12 @@ h6 {
   height: 46px;
   width: auto;
   display: block;
-
-  filter:
-    drop-shadow(0 2px 8px rgba(0, 0, 0, 0.55))
-    drop-shadow(0 0 14px rgba(247, 197, 51, 0.28));
-
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.55)) drop-shadow(0 0 14px rgba(247, 197, 51, 0.28));
   transition: filter 0.35s ease;
 }
 
 .logo-wrapper:hover .logo-img {
-  filter:
-    drop-shadow(0 4px 12px rgba(0, 0, 0, 0.6))
-    drop-shadow(0 0 28px rgba(247, 197, 51, 0.65));
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.6)) drop-shadow(0 0 28px rgba(247, 197, 51, 0.65));
 }
 
 
@@ -186,13 +202,7 @@ h6 {
     url("images/hero-bg.jpg");
 
   background-repeat: no-repeat;
-
-  background-position:
-    center 30%,
-    center 70%,
-    center,
-    center 38%;
-
+  background-position: center 30%, center 70%, center, center 38%;
   background-size: cover;
   background-color: var(--bg-black);
 }
@@ -208,7 +218,6 @@ h6 {
   inset: 0;
   z-index: 0;
   pointer-events: none;
-
   background: radial-gradient(
     ellipse at center,
     transparent 45%,
@@ -236,25 +245,20 @@ h6 {
 
 
 /* =========================================================
-   HERO BADGE
+   HERO BADGE E ESPAÇAMENTOS (Mais Respiro)
    ========================================================= */
 
 .hero-badge {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-
   background-color: rgba(247, 197, 51, 0.08);
   color: #f7c533;
-
   padding: 8px 16px;
   border-radius: 30px;
-
   font-size: 13px;
   font-weight: 600;
-
-  margin-bottom: 20px;
-
+  margin-bottom: 30px; /* Aumentado para mais respiro */
   border: 1px solid rgba(247, 197, 51, 0.45);
 }
 
@@ -266,7 +270,7 @@ h6 {
 .hero-title {
   font-size: 3.2rem;
   line-height: 1.15;
-  margin-bottom: 20px;
+  margin-bottom: 25px; /* Aumentado para mais respiro */
   color: #ffffff;
 }
 
@@ -282,7 +286,7 @@ h6 {
 .hero-description {
   font-size: 1.125rem;
   color: var(--text-muted);
-  margin-bottom: 30px;
+  margin-bottom: 45px; /* Aumentado bastante para afastar os botões e dar elegância */
   max-width: 540px;
 }
 
@@ -308,15 +312,11 @@ h6 {
   align-items: center;
   justify-content: center;
   gap: 10px;
-
   padding: 16px 30px;
   border-radius: 8px;
-
   font-size: 16px;
   font-weight: 600;
-
   text-decoration: none;
-
   transition: var(--transition);
 }
 
@@ -333,7 +333,7 @@ h6 {
 
 
 /* =========================================================
-   HERO LINK
+   HERO LINK (Atualizado para Ghost Button)
    ========================================================= */
 
 .hero-link {
@@ -343,7 +343,6 @@ h6 {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  /* Novas propriedades para criar o Ghost Button */
   padding: 14px 24px;
   border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 8px;
@@ -358,7 +357,7 @@ h6 {
 
 
 /* =========================================================
-   FOTO DO ADVOGADO
+   FOTO DO ADVOGADO (Efeito FADE-OUT aplicado)
    ========================================================= */
 
 .hero-image-wrapper {
@@ -366,127 +365,73 @@ h6 {
   justify-content: center;
 }
 
-
-/* Container da foto */
-
 .hero-image-card {
   position: relative;
   max-width: 440px;
   width: 100%;
-
-  /*
-    Impede que o zoom da imagem ultrapasse
-    visualmente o espaço destinado à foto.
-  */
-  overflow: hidden;
-
-  border-radius: 12px;
+  /* Retirado o overflow hidden para o badge saltar livremente */
 }
-
-
-/* Foto */
 
 .lawyer-photo {
   width: 100%;
   height: auto;
   display: block;
   object-fit: cover;
-
-  border-radius: 12px;
-
-  /*
-    Sombra inicial discreta.
-    Mantém a foto destacada mesmo sem interação.
-  */
-  box-shadow:
-    0 12px 35px rgba(0, 0, 0, 0.45);
-
-  /*
-    Transições separadas para deixar
-    o movimento mais sofisticado.
-  */
-  transition:
-    transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
-    filter 0.45s ease,
-    box-shadow 0.45s ease;
+  
+  /* Retiramos bordas e sombras grossas para a máscara funcionar bem */
+  /* Máscara de Fade-out (Apaga a imagem suavemente na base) */
+  -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 65%, rgba(0,0,0,0) 98%);
+  mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 65%, rgba(0,0,0,0) 98%);
+  
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1), filter 0.45s ease;
 }
-
-
-/*
-  Efeito ao passar o mouse.
-
-  O zoom é propositalmente pequeno:
-  apenas 2,5%, para não deixar a página
-  com aparência exagerada.
-*/
 
 .hero-image-card:hover .lawyer-photo {
   transform: scale(1.025);
-
-  filter:
-    brightness(1.05)
-    contrast(1.02);
-
-  box-shadow:
-    0 18px 45px rgba(0, 0, 0, 0.60),
-    0 0 22px rgba(247, 197, 51, 0.16);
+  filter: brightness(1.05) contrast(1.02);
 }
 
 
 /* =========================================================
-   BADGE SOBRE A FOTO
+   BADGE SOBRE A FOTO (Glassmorphism Aprimorado)
    ========================================================= */
 
 .hero-card-badge {
   position: absolute;
-
-  bottom: 24px;
-  left: 24px;
-  right: 24px;
-
-  background: rgba(11, 15, 25, 0.85);
-
-  backdrop-filter: blur(12px);
-
-  color: white;
-
-  padding: 14px 20px;
-
-  border-radius: 12px;
-
-  box-shadow:
-    0 10px 30px rgba(0, 0, 0, 0.6);
-
-  border:
-    1px solid rgba(247, 197, 51, 0.35);
-
+  /* Subimos o badge para cruzar o fade da imagem (flutuando) */
+  bottom: 15px; 
+  left: 8%;
+  right: 8%;
+  
+  /* Efeito Vidro Fosco (Glassmorphism) */
+  background: rgba(255, 255, 255, 0.05); /* Fundo levíssimo */
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  
+  padding: 18px 20px;
+  border-radius: 16px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6); /* Sombra difusa projetada */
+  
+  /* Bordas iluminadas simulando a espessura do vidro */
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-top: 1px solid rgba(255, 255, 255, 0.25);
+  
   text-align: center;
-
-  /*
-    Mantém o badge acima da imagem.
-  */
   z-index: 2;
 }
 
 .hero-card-badge strong {
   display: block;
-
   font-size: 15px;
-
   font-family: "Playfair Display", serif;
-
   letter-spacing: 0.5px;
-
   color: #ffffff;
 }
 
 .hero-card-badge span {
   font-size: 11.5px;
-
   color: var(--accent-gold);
-
   letter-spacing: 0.5px;
-
   text-transform: uppercase;
 }
 
@@ -502,17 +447,12 @@ h6 {
 
 .id-card {
   background-color: var(--bg-surface);
-
   border-left: 5px solid var(--accent-color);
-
   padding: 40px;
-
   border-radius: 0 12px 12px 0;
-
   display: flex;
   gap: 30px;
   align-items: flex-start;
-
   border-top: 1px solid var(--border-color);
   border-right: 1px solid var(--border-color);
   border-bottom: 1px solid var(--border-color);
@@ -520,15 +460,10 @@ h6 {
 
 .id-icon {
   font-size: 32px;
-
   color: #f7c533;
-
   background: rgba(247, 197, 51, 0.12);
-
   padding: 20px;
-
   border-radius: 50%;
-
   display: flex;
   align-items: center;
   justify-content: center;
@@ -578,9 +513,7 @@ h6 {
 
 .services-grid {
   display: grid;
-
   grid-template-columns: repeat(3, 1fr);
-
   gap: 30px;
 }
 
@@ -591,29 +524,21 @@ h6 {
 
 .service-card {
   background: var(--bg-surface);
-
   padding: 35px 30px;
-
   border-radius: 12px;
-
   box-shadow: var(--box-shadow);
-
   transition: var(--transition);
-
   border: 1px solid var(--border-color);
 }
 
 .service-card:hover {
   transform: translateY(-5px);
-
   border-color: var(--accent-color);
 }
 
 .service-icon {
   font-size: 28px;
-
   color: #f7c533;
-
   margin-bottom: 20px;
 }
 
@@ -634,17 +559,13 @@ h6 {
 
 .differential-section {
   padding: 90px 0;
-
   background-color: var(--bg-black);
 }
 
 .differential-grid {
   display: grid;
-
   grid-template-columns: 1fr 1.1fr;
-
   gap: 60px;
-
   align-items: center;
 }
 
@@ -655,11 +576,8 @@ h6 {
 
 .diff-img {
   width: 100%;
-
   border-radius: 12px;
-
   box-shadow: var(--box-shadow);
-
   border: 1px solid var(--border-color);
 }
 
@@ -675,9 +593,7 @@ h6 {
 
 .diff-subtitle {
   color: var(--text-muted);
-
   font-size: 1.05rem;
-
   margin-bottom: 30px;
 }
 
@@ -688,43 +604,32 @@ h6 {
 
 .diff-list {
   list-style: none;
-
   display: flex;
-
   flex-direction: column;
-
   gap: 20px;
 }
 
 .diff-list li {
   display: flex;
-
   gap: 15px;
-
   align-items: flex-start;
 }
 
 .diff-list i {
   color: var(--accent-gold);
-
   font-size: 20px;
-
   margin-top: 3px;
 }
 
 .diff-list strong {
   display: block;
-
   color: #ffffff;
-
   font-size: 1rem;
-
   margin-bottom: 2px;
 }
 
 .diff-list span {
   color: var(--text-muted);
-
   font-size: 0.9rem;
 }
 
@@ -735,42 +640,27 @@ h6 {
 
 .cta-section {
   padding: 80px 0;
-
-  background:
-    linear-gradient(
-      135deg,
-      #090d16 0%,
-      #030712 100%
-    );
-
+  background: linear-gradient(135deg, #090d16 0%, #030712 100%);
   text-align: center;
-
   color: white;
-
   border-top: 1px solid var(--border-color);
-
   border-bottom: 1px solid var(--border-color);
 }
 
 .cta-box {
   max-width: 700px;
-
   margin: 0 auto;
 }
 
 .cta-box h2 {
   color: white;
-
   font-size: 2.5rem;
-
   margin-bottom: 15px;
 }
 
 .cta-box p {
   color: #9ca3af;
-
   font-size: 1.15rem;
-
   margin-bottom: 35px;
 }
 
@@ -781,22 +671,15 @@ h6 {
 
 .btn-whatsapp-large {
   background-color: var(--whatsapp-green);
-
   color: white;
-
   font-size: 18px;
-
   padding: 18px 36px;
-
   border-radius: 50px;
-
-  box-shadow:
-    0 8px 25px rgba(37, 211, 102, 0.3);
+  box-shadow: 0 8px 25px rgba(37, 211, 102, 0.3);
 }
 
 .btn-whatsapp-large:hover {
   background-color: var(--whatsapp-green-hover);
-
   transform: translateY(-2px);
 }
 
@@ -807,59 +690,42 @@ h6 {
 
 .site-footer {
   background-color: #020408;
-
   color: #9ca3af;
-
   padding: 50px 0 30px 0;
-
   font-size: 0.9rem;
 }
 
 .footer-content {
   display: flex;
-
   flex-direction: column;
-
   align-items: center;
-
   text-align: center;
-
   gap: 20px;
 }
 
 .footer-logo {
   height: 35px;
-
   opacity: 0.92;
 }
 
 .oab-text {
   font-size: 0.85rem;
-
   color: var(--accent-gold);
 }
 
 .footer-legal {
   border-top: 1px solid rgba(255, 255, 255, 0.08);
-
   width: 100%;
-
   padding-top: 20px;
-
   display: flex;
-
   flex-direction: column;
-
   gap: 8px;
 }
 
 .disclaimer {
   font-size: 0.75rem;
-
   color: #6b7280;
-
   max-width: 700px;
-
   margin: 0 auto;
 }
 
@@ -870,34 +736,20 @@ h6 {
 
 .floating-whatsapp {
   position: fixed;
-
   bottom: 25px;
   right: 25px;
-
   background-color: var(--whatsapp-green);
-
   color: white;
-
   width: 60px;
   height: 60px;
-
   border-radius: 50%;
-
   display: flex;
-
   align-items: center;
-
   justify-content: center;
-
   font-size: 30px;
-
-  box-shadow:
-    0 4px 20px rgba(37, 211, 102, 0.4);
-
+  box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
   z-index: 999;
-
   transition: var(--transition);
-
   animation: pulse-whatsapp 2s infinite;
 }
 
@@ -912,173 +764,104 @@ h6 {
 
 @keyframes pulse-whatsapp {
   0% {
-    box-shadow:
-      0 0 0 0 rgba(37, 211, 102, 0.6);
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.6);
   }
-
   70% {
-    box-shadow:
-      0 0 0 15px rgba(37, 211, 102, 0);
+    box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
   }
-
   100% {
-    box-shadow:
-      0 0 0 0 rgba(37, 211, 102, 0);
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
   }
 }
 
 
 /* =========================================================
-   RESPONSIVIDADE — TABLETS
+   RESPONSIVIDADE — TABLETS E MOBILE
    ========================================================= */
 
 @media (max-width: 992px) {
-
   .hero-grid,
   .differential-grid {
     grid-template-columns: 1fr;
-
     gap: 40px;
-
     text-align: center;
   }
-
   .hero-description {
     margin: 0 auto 30px auto;
   }
-
   .hero-cta-group {
     justify-content: center;
   }
-
   .services-grid {
     grid-template-columns: repeat(2, 1fr);
   }
-
   .hero-title {
     font-size: 2.6rem;
   }
-
   .id-card {
     flex-direction: column;
-
     align-items: center;
-
     text-align: center;
   }
-
-  /*
-    A foto continua com tamanho controlado
-    em telas menores.
-  */
-
   .hero-image-card {
     max-width: 440px;
-
     margin: 0 auto;
   }
 }
 
-
-/* =========================================================
-   RESPONSIVIDADE — CELULARES
-   ========================================================= */
-
 @media (max-width: 768px) {
+  /* Ocultar elementos não essenciais do header no mobile */
+  .main-nav {
+      display: none;
+  }
+  .whatsapp-btn-header .btn-text {
+      display: none;
+  }
+  .whatsapp-btn-header {
+      padding: 10px;
+      border-radius: 50%;
+      width: 42px;
+      height: 42px;
+      justify-content: center;
+  }
 
   .services-grid {
     grid-template-columns: 1fr;
   }
-
   .hero-title {
     font-size: 2.2rem;
   }
-
   .section-header h2,
   .cta-box h2,
   .differential-content h2 {
     font-size: 2rem;
   }
-
   .hero-section {
     padding: 50px 0;
   }
-
-  /*
-    No celular não existe hover tradicional.
-    Mantemos a foto sem zoom para evitar
-    comportamento estranho em dispositivos touch.
-  */
-
   .lawyer-photo {
     transform: none !important;
   }
-
   .hero-image-card:hover .lawyer-photo {
     transform: none !important;
   }
 }
-
 
 /* =========================================================
    ACESSIBILIDADE
    ========================================================= */
 
 @media (prefers-reduced-motion: reduce) {
-
   html {
     scroll-behavior: auto;
   }
-
   *,
   *::before,
   *::after {
     transition: none !important;
     animation: none !important;
   }
-
   .lawyer-photo {
     transform: none !important;
   }
-}
-/* =========================================================
-   MELHORIAS DE UI / UX
-   ========================================================= */
-
-/* Estilo do novo menu de navegação */
-.main-nav ul {
-    display: flex;
-    gap: 30px;
-    list-style: none;
-}
-
-.main-nav a {
-    color: var(--text-main);
-    text-decoration: none;
-    font-size: 0.95rem;
-    font-weight: 500;
-    transition: color 0.3s;
-}
-
-.main-nav a:hover {
-    color: var(--accent-gold);
-}
-
-/* Ocultar texto do botão do topo e menu em telas pequenas */
-@media (max-width: 768px) {
-    .main-nav {
-        display: none; /* Esconde os links no mobile para não poluir */
-    }
-    
-    .whatsapp-btn-header .btn-text {
-        display: none; /* Esconde o texto "Atendimento Rápido" */
-    }
-    
-    .whatsapp-btn-header {
-        padding: 10px;
-        border-radius: 50%; /* Transforma o botão em uma bolinha */
-        width: 42px;
-        height: 42px;
-        justify-content: center;
-    }
 }
