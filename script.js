@@ -48,3 +48,55 @@ document.addEventListener("DOMContentLoaded", () => {
     updateHeaderOpacity();
   }
 });
+// ---- Rolagem suave e lenta para os links do menu ----
+ 
+  const internalLinks = document.querySelectorAll('a[href^="#"]');
+
+  internalLinks.forEach(link => {
+    link.addEventListener('click', function(e) {
+      const targetId = this.getAttribute('href');
+      
+      // Se o link for apenas "#" (como a logo ou topo), ignora o scroll personalizado
+      if (targetId === '#' || targetId === '') return;
+
+      const targetSection = document.querySelector(targetId);
+
+      if (targetSection) {
+        e.preventDefault(); // Impede o salto instantâneo padrão
+
+        // Pega a altura atual do header para a página não rolar para debaixo dele
+        const header = document.querySelector('.site-header');
+        const headerHeight = header ? header.offsetHeight : 0;
+        
+        // Calcula a distância exata até a seção (dando 20px de "respiro")
+        const targetPosition = targetSection.getBoundingClientRect().top + window.pageYOffset - headerHeight - 20;
+        
+        const startPosition = window.pageYOffset;
+        const distance = targetPosition - startPosition;
+        
+        // TEMPO DA ANIMAÇÃO: 1500 = 1.5 segundos.
+        // Se quiser que seja ainda mais lento, pode mudar para 2000.
+        const duration = 1500; 
+        let start = null;
+
+        // Função para o movimento fluido (Ease In-Out)
+        function animation(currentTime) {
+          if (start === null) start = currentTime;
+          const timeElapsed = currentTime - start;
+          
+          const ease = timeElapsed < duration / 2
+            ? 4 * Math.pow(timeElapsed / duration, 3)
+            : 1 - Math.pow(-2 * timeElapsed / duration + 2, 3) / 2;
+
+          window.scrollTo(0, startPosition + distance * ease);
+
+          if (timeElapsed < duration) {
+            requestAnimationFrame(animation);
+          }
+        }
+
+        // Inicia a animação
+        requestAnimationFrame(animation);
+      }
+    });
+  }); 
