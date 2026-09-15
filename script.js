@@ -1,6 +1,7 @@
 const WHATSAPP_LINK = "https://wa.me/5532920007640?text=Olá,%20gostaria%20de%20falar%20com%20um%20especialista%20sobre%20meu%20caso%20no%20INSS.";
 
 document.addEventListener("DOMContentLoaded", () => {
+  // ---- Configuração dos Botões do WhatsApp ----
   const whatsappButtons = document.querySelectorAll(".whatsapp-link");
   whatsappButtons.forEach(button => {
     button.setAttribute("href", WHATSAPP_LINK);
@@ -47,56 +48,88 @@ document.addEventListener("DOMContentLoaded", () => {
     // Garante o estado correto caso a página já carregue com scroll (ex: F5 no meio da página)
     updateHeaderOpacity();
   }
-});
-// ---- Rolagem suave e lenta para os links do menu ----
- 
-  const internalLinks = document.querySelectorAll('a[href^="#"]');
 
-  internalLinks.forEach(link => {
-    link.addEventListener('click', function(e) {
-      const targetId = this.getAttribute('href');
-      
-      // Se o link for apenas "#" (como a logo ou topo), ignora o scroll personalizado
-      if (targetId === '#' || targetId === '') return;
+  // ---- Efeito Cascata (Stagger) na Lista de Diferenciais ----
+  const diffItems = document.querySelectorAll(".diff-list li");
 
-      const targetSection = document.querySelector(targetId);
+  if (diffItems.length > 0) {
+    const observerOptions = {
+      root: null,
+      rootMargin: "0px 0px -10% 0px", // Dispara um pouco antes de chegar ao centro da tela
+      threshold: 0.1 
+    };
 
-      if (targetSection) {
-        e.preventDefault(); // Impede o salto instantâneo padrão
-
-        // Pega a altura atual do header para a página não rolar para debaixo dele
-        const header = document.querySelector('.site-header');
-        const headerHeight = header ? header.offsetHeight : 0;
-        
-        // Calcula a distância exata até a seção (dando 20px de "respiro")
-        const targetPosition = targetSection.getBoundingClientRect().top + window.pageYOffset - headerHeight - 20;
-        
-        const startPosition = window.pageYOffset;
-        const distance = targetPosition - startPosition;
-        
-        // TEMPO DA ANIMAÇÃO: 1500 = 1.5 segundos.
-        // Se quiser que seja ainda mais lento, pode mudar para 2000.
-        const duration = 1500; 
-        let start = null;
-
-        // Função para o movimento fluido (Ease In-Out)
-        function animation(currentTime) {
-          if (start === null) start = currentTime;
-          const timeElapsed = currentTime - start;
+    const diffObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          // Pega o índice do item atual em relação à lista completa
+          const index = Array.from(diffItems).indexOf(entry.target);
           
-          const ease = timeElapsed < duration / 2
-            ? 4 * Math.pow(timeElapsed / duration, 3)
-            : 1 - Math.pow(-2 * timeElapsed / duration + 2, 3) / 2;
+          // Aplica um pequeno atraso matemático (delay) para criar o efeito escada/cascata
+          setTimeout(() => {
+            entry.target.classList.add("show-item");
+          }, index * 150); // 150ms de diferença entre o surgimento de um item e o próximo
 
-          window.scrollTo(0, startPosition + distance * ease);
-
-          if (timeElapsed < duration) {
-            requestAnimationFrame(animation);
-          }
+          // Para de observar depois que a animação rodar a primeira vez
+          observer.unobserve(entry.target);
         }
+      });
+    }, observerOptions);
 
-        // Inicia a animação
-        requestAnimationFrame(animation);
-      }
+    diffItems.forEach((item) => {
+      diffObserver.observe(item);
     });
-  }); 
+  }
+});
+
+// ---- Rolagem suave e lenta para os links do menu ----
+const internalLinks = document.querySelectorAll('a[href^="#"]');
+
+internalLinks.forEach(link => {
+  link.addEventListener('click', function(e) {
+    const targetId = this.getAttribute('href');
+    
+    // Se o link for apenas "#" (como a logo ou topo), ignora o scroll personalizado
+    if (targetId === '#' || targetId === '') return;
+
+    const targetSection = document.querySelector(targetId);
+
+    if (targetSection) {
+      e.preventDefault(); // Impede o salto instantâneo padrão
+
+      // Pega a altura atual do header para a página não rolar para debaixo dele
+      const header = document.querySelector('.site-header');
+      const headerHeight = header ? header.offsetHeight : 0;
+      
+      // Calcula a distância exata até a seção (dando 20px de "respiro")
+      const targetPosition = targetSection.getBoundingClientRect().top + window.pageYOffset - headerHeight - 20;
+      
+      const startPosition = window.pageYOffset;
+      const distance = targetPosition - startPosition;
+      
+      // TEMPO DA ANIMAÇÃO: 1500 = 1.5 segundos.
+      // Se quiser que seja ainda mais lento, pode mudar para 2000.
+      const duration = 1500; 
+      let start = null;
+
+      // Função para o movimento fluido (Ease In-Out)
+      function animation(currentTime) {
+        if (start === null) start = currentTime;
+        const timeElapsed = currentTime - start;
+        
+        const ease = timeElapsed < duration / 2
+          ? 4 * Math.pow(timeElapsed / duration, 3)
+          : 1 - Math.pow(-2 * timeElapsed / duration + 2, 3) / 2;
+
+        window.scrollTo(0, startPosition + distance * ease);
+
+        if (timeElapsed < duration) {
+          requestAnimationFrame(animation);
+        }
+      }
+
+      // Inicia a animação
+      requestAnimationFrame(animation);
+    }
+  });
+});
