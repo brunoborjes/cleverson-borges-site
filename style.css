@@ -33,10 +33,6 @@
    HTML / BODY
    ========================================================= */
 
-html {
-  /* Scroll-behavior removido para o JS controlar a velocidade suavemente */
-}
-
 body {
   font-family: "Plus Jakarta Sans", sans-serif;
   color: var(--text-main);
@@ -100,7 +96,6 @@ h6 {
   align-items: center;
 }
 
-/* NOVO MENU NAV */
 .main-nav ul {
     display: flex;
     gap: 30px;
@@ -207,11 +202,6 @@ h6 {
   background-color: var(--bg-black);
 }
 
-
-/* =========================================================
-   VINHETA DO HERO
-   ========================================================= */
-
 .hero-section::before {
   content: "";
   position: absolute;
@@ -231,22 +221,12 @@ h6 {
   z-index: 1;
 }
 
-
-/* =========================================================
-   HERO GRID
-   ========================================================= */
-
 .hero-grid {
   display: grid;
   grid-template-columns: 1.1fr 0.9fr;
   gap: 50px;
   align-items: center;
 }
-
-
-/* =========================================================
-   HERO BADGE E ESPAÇAMENTOS (Mais Respiro)
-   ========================================================= */
 
 .hero-badge {
   display: inline-flex;
@@ -258,19 +238,14 @@ h6 {
   border-radius: 30px;
   font-size: 13px;
   font-weight: 600;
-  margin-bottom: 30px; /* Aumentado para mais respiro */
+  margin-bottom: 30px; 
   border: 1px solid rgba(247, 197, 51, 0.45);
 }
-
-
-/* =========================================================
-   HERO TÍTULO
-   ========================================================= */
 
 .hero-title {
   font-size: 3.2rem;
   line-height: 1.15;
-  margin-bottom: 25px; /* Aumentado para mais respiro */
+  margin-bottom: 25px; 
   color: #ffffff;
 }
 
@@ -278,22 +253,12 @@ h6 {
   color: #f7c533;
 }
 
-
-/* =========================================================
-   HERO DESCRIÇÃO
-   ========================================================= */
-
 .hero-description {
   font-size: 1.125rem;
   color: var(--text-muted);
-  margin-bottom: 45px; /* Aumentado bastante para afastar os botões e dar elegância */
+  margin-bottom: 45px; 
   max-width: 540px;
 }
-
-
-/* =========================================================
-   HERO CTA
-   ========================================================= */
 
 .hero-cta-group {
   display: flex;
@@ -301,11 +266,6 @@ h6 {
   gap: 20px;
   flex-wrap: wrap;
 }
-
-
-/* =========================================================
-   BOTÕES
-   ========================================================= */
 
 .btn {
   display: inline-flex;
@@ -331,11 +291,6 @@ h6 {
   transform: translateY(-2px);
 }
 
-
-/* =========================================================
-   HERO LINK (Atualizado para Ghost Button)
-   ========================================================= */
-
 .hero-link {
   color: var(--text-main);
   font-weight: 600;
@@ -357,7 +312,7 @@ h6 {
 
 
 /* =========================================================
-   FOTO DO ADVOGADO (Efeito FADE-OUT aplicado)
+   FOTO DO ADVOGADO NO HERO
    ========================================================= */
 
 .hero-image-wrapper {
@@ -369,7 +324,6 @@ h6 {
   position: relative;
   max-width: 440px;
   width: 100%;
-  /* Retirado o overflow hidden para o badge saltar livremente */
 }
 
 .lawyer-photo {
@@ -377,12 +331,8 @@ h6 {
   height: auto;
   display: block;
   object-fit: cover;
-  
-  /* Retiramos bordas e sombras grossas para a máscara funcionar bem */
-  /* Máscara de Fade-out (Apaga a imagem suavemente na base) */
   -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 65%, rgba(0,0,0,0) 98%);
   mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 65%, rgba(0,0,0,0) 98%);
-  
   transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1), filter 0.45s ease;
 }
 
@@ -391,31 +341,19 @@ h6 {
   filter: brightness(1.05) contrast(1.02);
 }
 
-
-/* =========================================================
-   BADGE SOBRE A FOTO (Glassmorphism Aprimorado)
-   ========================================================= */
-
 .hero-card-badge {
   position: absolute;
-  /* Subimos o badge para cruzar o fade da imagem (flutuando) */
   bottom: 15px; 
   left: 8%;
   right: 8%;
-  
-  /* Efeito Vidro Fosco (Glassmorphism) */
-  background: rgba(255, 255, 255, 0.05); /* Fundo levíssimo */
+  background: rgba(255, 255, 255, 0.05); 
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  
   padding: 18px 20px;
   border-radius: 16px;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6); /* Sombra difusa projetada */
-  
-  /* Bordas iluminadas simulando a espessura do vidro */
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6); 
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-top: 1px solid rgba(255, 255, 255, 0.25);
-  
   text-align: center;
   z-index: 2;
 }
@@ -506,21 +444,11 @@ h6 {
   font-size: 1.05rem;
 }
 
-
-/* =========================================================
-   GRID DE SERVIÇOS
-   ========================================================= */
-
 .services-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 30px;
 }
-
-
-/* =========================================================
-   CARDS DE SERVIÇO
-   ========================================================= */
 
 .service-card {
   background: var(--bg-surface);
@@ -569,18 +497,31 @@ h6 {
   align-items: center;
 }
 
-
 /* =========================================================
-   IMAGEM DOS DIFERENCIAIS
+   IMAGEM DOS DIFERENCIAIS (Formato Quadro Portrait - Sem Efeito)
    ========================================================= */
+
+.differential-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 .diff-img {
   width: 100%;
-  border-radius: 12px;
-  box-shadow: var(--box-shadow);
-  border: 1px solid var(--border-color);
+  max-width: 360px; /* Deixa a imagem menor e mais proporcional */
+  height: 440px; /* Trava a altura para forçar o corte do teto */
+  display: block;
+  
+  /* O segredo do corte: preenche o espaço e foca na base da foto */
+  object-fit: cover; 
+  object-position: center bottom; 
+  
+  /* Deixa a foto parecendo um quadro/cartão elegante */
+  border-radius: 16px; 
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6); 
+  border: 1px solid rgba(255, 255, 255, 0.1); 
 }
-
 
 /* =========================================================
    CONTEÚDO DOS DIFERENCIAIS
@@ -597,16 +538,11 @@ h6 {
   margin-bottom: 30px;
 }
 
-
-/* =========================================================
-   LISTA DE DIFERENCIAIS (Efeitos Adicionados)
-   ========================================================= */
-
 .diff-list {
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 15px; /* Reduzi um pouco o gap base porque adicionamos padding no li */
+  gap: 15px;
 }
 
 .diff-list li {
@@ -616,24 +552,20 @@ h6 {
   padding: 12px 16px;
   border-radius: 8px;
   border: 1px solid transparent;
-  
-  /* Estado inicial oculto para a animação de scroll no JS */
   opacity: 0;
   transform: translateX(-30px);
   transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
-/* Classe que o JS vai adicionar para mostrar o item */
 .diff-list li.show-item {
   opacity: 1;
   transform: translateX(0);
 }
 
-/* Hover Sutil: Fundo levíssimo, borda discreta e movimento */
 .diff-list li:hover {
   background-color: rgba(255, 255, 255, 0.03);
-  border-color: rgba(247, 197, 51, 0.15); /* Borda dourada super suave */
-  transform: translateX(10px); /* Desloca suavemente para a direita */
+  border-color: rgba(247, 197, 51, 0.15); 
+  transform: translateX(10px); 
 }
 
 .diff-list i {
@@ -643,7 +575,6 @@ h6 {
   transition: all 0.3s ease;
 }
 
-/* Hover Sutil no Ícone: Leve aumento e brilho (glow) */
 .diff-list li:hover i {
   transform: scale(1.2);
   filter: drop-shadow(0 0 8px rgba(247, 197, 51, 0.6));
@@ -657,7 +588,6 @@ h6 {
   transition: color 0.3s ease;
 }
 
-/* Deixa o título levemente dourado no hover */
 .diff-list li:hover strong {
   color: var(--accent-gold);
 }
@@ -668,39 +598,43 @@ h6 {
 }
 
 /* =========================================================
-   CTA
+   CTA DE ALTA CONVERSÃO (Novo Design Glassmorphism)
    ========================================================= */
 
 .cta-section {
-  padding: 80px 0;
-  background: linear-gradient(135deg, #090d16 0%, #030712 100%);
+  padding: 100px 0;
+  background: radial-gradient(circle at center, #111827 0%, var(--bg-black) 100%);
+  position: relative;
+  border-top: 1px solid rgba(255,255,255,0.05);
+}
+
+.cta-card {
+  background: linear-gradient(145deg, rgba(30, 41, 59, 0.4) 0%, rgba(15, 23, 42, 0.4) 100%);
+  border: 1px solid rgba(247, 197, 51, 0.2);
+  border-top: 1px solid rgba(247, 197, 51, 0.5);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.1);
+  border-radius: 24px;
+  padding: 65px 40px;
   text-align: center;
-  color: white;
-  border-top: 1px solid var(--border-color);
-  border-bottom: 1px solid var(--border-color);
-}
-
-.cta-box {
-  max-width: 700px;
+  max-width: 800px;
   margin: 0 auto;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 }
 
-.cta-box h2 {
-  color: white;
-  font-size: 2.5rem;
+.cta-card h2 {
+  font-size: 2.8rem;
   margin-bottom: 15px;
+  color: #ffffff;
 }
 
-.cta-box p {
+.cta-card p {
   color: #9ca3af;
   font-size: 1.15rem;
-  margin-bottom: 35px;
+  margin-bottom: 40px;
+  max-width: 550px;
+  margin-inline: auto;
 }
-
-
-/* =========================================================
-   BOTÃO WHATSAPP GRANDE
-   ========================================================= */
 
 .btn-whatsapp-large {
   background-color: var(--whatsapp-green);
@@ -709,56 +643,117 @@ h6 {
   padding: 18px 36px;
   border-radius: 50px;
   box-shadow: 0 8px 25px rgba(37, 211, 102, 0.3);
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: var(--transition);
 }
 
 .btn-whatsapp-large:hover {
   background-color: var(--whatsapp-green-hover);
-  transform: translateY(-2px);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px rgba(37, 211, 102, 0.4);
 }
 
 
 /* =========================================================
-   FOOTER
+   RODAPÉ (Novo Layout Dividido)
    ========================================================= */
 
 .site-footer {
-  background-color: #020408;
+  background-color: #030508;
   color: #9ca3af;
-  padding: 50px 0 30px 0;
+  padding: 70px 0 30px 0;
   font-size: 0.9rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-.footer-content {
+.footer-top {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  gap: 20px;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 40px;
+  padding-bottom: 40px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  margin-bottom: 30px;
 }
 
-.footer-logo {
-  height: 35px;
-  opacity: 0.92;
+.footer-brand {
+  max-width: 400px;
+}
+
+.footer-brand .footer-logo {
+  height: 42px;
+  margin-bottom: 15px;
+  display: block;
+}
+
+.footer-name {
+  color: #f3f4f6;
+  font-weight: 600;
+  margin-bottom: 5px;
+  font-size: 1.05rem;
 }
 
 .oab-text {
-  font-size: 0.85rem;
   color: var(--accent-gold);
+  font-size: 0.85rem;
 }
 
-.footer-legal {
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
-  width: 100%;
-  padding-top: 20px;
+/* Redes Sociais no Rodapé */
+.footer-social {
+  text-align: right;
+}
+
+.footer-social span {
+  display: block;
+  color: #e5e7eb;
+  margin-bottom: 12px;
+  font-weight: 500;
+}
+
+.social-links {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+}
+
+.social-links a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 46px;
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--accent-gold);
+  border-radius: 50%;
+  font-size: 20px;
+  border: 1px solid rgba(247, 197, 51, 0.2);
+  transition: var(--transition);
+  text-decoration: none;
+}
+
+.social-links a:hover {
+  background: var(--accent-gold);
+  color: var(--bg-black);
+  transform: translateY(-4px);
+  box-shadow: 0 6px 15px rgba(247, 197, 51, 0.3);
+}
+
+.footer-bottom {
+  text-align: center;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 10px;
 }
 
 .disclaimer {
   font-size: 0.75rem;
   color: #6b7280;
-  max-width: 700px;
+  max-width: 800px;
   margin: 0 auto;
 }
 
@@ -784,6 +779,7 @@ h6 {
   z-index: 999;
   transition: var(--transition);
   animation: pulse-whatsapp 2s infinite;
+  text-decoration: none;
 }
 
 .floating-whatsapp:hover {
@@ -843,7 +839,6 @@ h6 {
 }
 
 @media (max-width: 768px) {
-  /* Ocultar elementos não essenciais do header no mobile */
   .main-nav {
       display: none;
   }
@@ -865,7 +860,6 @@ h6 {
     font-size: 2.2rem;
   }
   .section-header h2,
-  .cta-box h2,
   .differential-content h2 {
     font-size: 2rem;
   }
@@ -877,6 +871,26 @@ h6 {
   }
   .hero-image-card:hover .lawyer-photo {
     transform: none !important;
+  }
+  
+  /* Ajustes Mobile para Nova CTA e Rodapé */
+  .cta-card {
+    padding: 40px 20px;
+  }
+  .cta-card h2 {
+    font-size: 2.2rem;
+  }
+  .footer-top {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 30px;
+  }
+  .footer-social {
+    text-align: center;
+  }
+  .social-links {
+    justify-content: center;
   }
 }
 
