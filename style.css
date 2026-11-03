@@ -1,93 +1,208 @@
 /* =========================================================
-   VARIÁVEIS E CONFIGURAÇÕES GLOBAIS
+   DESIGN TOKENS & VARIABLES (EDITORIAL/AGENCY)
    ========================================================= */
-
 :root {
-  --primary-color: #0f172a;
-  --accent-color: #c9971f;
-  --accent-gold: #f7c533;
-  --text-main: #f3f4f6;
-  --text-muted: #9ca3af;
-  --bg-black: #050505;
-  --bg-surface: #121214;
-  --border-color: #27272a;
-  --transition: all 0.3s ease;
-  --box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
-  --whatsapp-green: #25d366;
-  --whatsapp-green-hover: #20ba5a;
+  /* Cores - Sóbrias e sofisticadas */
+  --bg-main: #fafafa;
+  --bg-surface: #ffffff;
+  --bg-alt: #f3f1ec;
+
+  --ink-dark: #121212;
+  --ink-base: #333333;
+  --ink-light: #666666;
+
+  --brand-primary: #7a1328; /* Maroon Profundo */
+  --brand-primary-hover: #590d1c;
+
+  --accent-gold: #a58444; /* Dourado Sóbrio */
+  --accent-gold-light: #d4c3a3;
+
+  --ui-border: #e8e5df;
+  --whatsapp: #25d366;
+
+  /* Tipografia Fluida (Clamp) */
+  --font-serif: "Fraunces", Georgia, serif;
+  --font-sans: "Source Sans 3", system-ui, sans-serif;
+
+  --text-base: clamp(1rem, 0.95vw + 0.5rem, 1.125rem);
+  --text-h1: clamp(2.5rem, 4vw + 1rem, 4.5rem);
+  --text-h2: clamp(2rem, 3vw + 0.5rem, 3rem);
+  --text-h3: clamp(1.25rem, 1.5vw + 0.5rem, 1.75rem);
+
+  /* Sombras e Espaçamentos */
+  --shadow-glass: 0 8px 32px rgba(0, 0, 0, 0.06);
+  --shadow-soft: 0 4px 20px rgba(0, 0, 0, 0.04);
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --transition-smooth: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
-
 /* =========================================================
-   RESET
+   RESET & TYPOGRAPHY
    ========================================================= */
-
-* {
+*,
+*::before,
+*::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-
-/* =========================================================
-   HTML / BODY
-   ========================================================= */
-
-body {
-  font-family: "Plus Jakarta Sans", sans-serif;
-  color: var(--text-main);
-  background-color: var(--bg-black);
-  line-height: 1.6;
-  -webkit-font-smoothing: antialiased;
+html {
+  scroll-behavior: smooth;
 }
 
+body {
+  font-family: var(--font-sans);
+  color: var(--ink-base);
+  background-color: var(--bg-main);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  font-size: var(--text-base);
+}
 
-/* =========================================================
-   TIPOGRAFIA
-   ========================================================= */
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: var(--transition-smooth);
+}
+
+ul {
+  list-style: none;
+}
 
 h1,
 h2,
 h3,
-h4,
-h5,
-h6 {
-  font-family: "Playfair Display", serif;
-  color: #ffffff;
+h4 {
+  font-family: var(--font-serif);
+  color: var(--ink-dark);
+  line-height: 1.1;
+  font-weight: 400;
 }
 
-
-/* =========================================================
-   CONTAINER
-   ========================================================= */
+em {
+  font-style: italic;
+  color: var(--brand-primary);
+}
 
 .container {
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0 5%;
 }
 
+/* =========================================================
+   COMPONENTS
+   ========================================================= */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 16px 32px;
+  border-radius: var(--radius-sm);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  transition: var(--transition-smooth);
+  cursor: pointer;
+  border: 1px solid transparent;
+}
+
+.btn-primary {
+  background-color: var(--brand-primary);
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background-color: var(--brand-primary-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(122, 19, 40, 0.2);
+}
+
+.btn-outline {
+  border-color: var(--ink-dark);
+  color: var(--ink-dark);
+}
+
+.btn-outline:hover {
+  background-color: var(--ink-dark);
+  color: #fff;
+}
+
+.btn-outline-light {
+  border-color: #fff;
+  color: #fff;
+}
+
+.btn-outline-light:hover {
+  background-color: #fff;
+  color: var(--brand-primary);
+}
+
+.btn-pulse {
+  animation: pulse-shadow 3s infinite;
+}
+
+@keyframes pulse-shadow {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(122, 19, 40, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 15px rgba(122, 19, 40, 0);
+  }
+}
+
+.editorial-line {
+  width: 60px;
+  height: 2px;
+  background-color: var(--accent-gold);
+  margin: 24px 0;
+}
+.text-center .editorial-line {
+  margin: 24px auto;
+}
+
+.section-kicker {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--accent-gold);
+  margin-bottom: 16px;
+}
 
 /* =========================================================
    HEADER
    ========================================================= */
-
 .site-header {
-  background-color: rgba(5, 5, 5, 0.9);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-  position: sticky;
+  position: fixed;
   top: 0;
-  z-index: 1000;
-  padding: 15px 0;
-  transition: background-color 0.4s ease, padding 0.4s ease, border-bottom 0.4s ease, backdrop-filter 0.4s ease;
+  width: 100%;
+  z-index: 100;
+  background: rgba(250, 250, 250, 0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  padding: 20px 0;
+  transition:
+    padding 0.3s ease,
+    background 0.3s ease;
 }
 
-.site-header.header-scrolled {
-  background-color: rgba(5, 5, 5, 0.4);
-  padding: 8px 0;
-  border-bottom: 1px solid transparent;
-  backdrop-filter: blur(12px);
+.site-header.scrolled {
+  padding: 12px 0;
+  background: rgba(250, 250, 250, 0.98);
+  box-shadow: var(--shadow-soft);
 }
 
 .header-container {
@@ -96,797 +211,735 @@ h6 {
   align-items: center;
 }
 
+.logo-img {
+  height: 36px;
+  width: auto;
+}
+
 .main-nav ul {
-    display: flex;
-    gap: 30px;
-    list-style: none;
+  display: flex;
+  gap: 40px;
 }
 
 .main-nav a {
-    color: var(--text-main);
-    text-decoration: none;
-    font-size: 0.95rem;
-    font-weight: 500;
-    transition: color 0.3s;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--ink-base);
 }
 
 .main-nav a:hover {
-    color: var(--accent-gold);
+  color: var(--brand-primary);
 }
 
+.mobile-toggle {
+  display: none;
+  background: none;
+  border: none;
+  width: 30px;
+  height: 20px;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.hamburger-bar {
+  width: 100%;
+  height: 2px;
+  background: var(--ink-dark);
+  transition: 0.3s;
+}
 
 /* =========================================================
-   LOGO
+   MENU MOBILE (Drawer)
    ========================================================= */
-
-.logo-wrapper {
-  display: inline-flex;
-  align-items: center;
-  padding: 4px 6px 4px 0;
-  transition: transform 0.3s ease;
+.mobile-drawer {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  pointer-events: none;
 }
 
-.logo-wrapper:hover {
-  transform: translateY(-2px) scale(1.04);
+.mobile-drawer.open {
+  pointer-events: auto;
 }
 
-.logo-img {
-  height: 46px;
-  width: auto;
-  display: block;
-  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.55)) drop-shadow(0 0 14px rgba(247, 197, 51, 0.28));
-  transition: filter 0.35s ease;
+.drawer-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(4px);
+  opacity: 0;
+  transition: opacity 0.4s ease;
 }
 
-.logo-wrapper:hover .logo-img {
-  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.6)) drop-shadow(0 0 28px rgba(247, 197, 51, 0.65));
+.mobile-drawer.open .drawer-overlay {
+  opacity: 1;
 }
 
-
-/* =========================================================
-   BOTÃO WHATSAPP DO HEADER
-   ========================================================= */
-
-.whatsapp-btn-header {
+.drawer-content {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 90%;
+  max-width: 400px;
+  height: 100%;
+  background: var(--bg-surface);
+  padding: 40px 32px;
   display: flex;
+  flex-direction: column;
+  transform: translateX(100%);
+  transition: transform 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.mobile-drawer.open .drawer-content {
+  transform: translateX(0);
+}
+
+.drawer-header {
+  display: flex;
+  justify-content: space-between;
   align-items: center;
-  gap: 8px;
-  background-color: var(--whatsapp-green);
-  color: #ffffff;
-  padding: 10px 18px;
-  border-radius: 50px;
-  font-size: 14px;
-  font-weight: 600;
-  text-decoration: none;
-  transition: var(--transition);
+  margin-bottom: 48px;
 }
 
-.whatsapp-btn-header:hover {
-  transform: translateY(-2px);
+.drawer-logo {
+  height: 32px;
 }
-
+.drawer-close {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--ink-dark);
+}
+.drawer-nav ul {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.drawer-nav a {
+  font-size: 1.25rem;
+  font-family: var(--font-serif);
+  color: var(--ink-dark);
+}
+.drawer-footer {
+  margin-top: auto;
+}
+.drawer-oab {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 0.85rem;
+  color: var(--ink-light);
+}
+.full-width {
+  width: 100%;
+}
 
 /* =========================================================
-   HERO SECTION
+   HERO SECTION (Com Novo Background e Overlay de Legibilidade)
    ========================================================= */
-
 .hero-section {
   position: relative;
-  padding: 90px 0 0 0;
-  overflow: hidden;
-  isolation: isolate;
-
-  background-image:
-    radial-gradient(
-      circle at 10% 20%,
-      rgba(247, 197, 51, 0.14) 0%,
-      transparent 45%
-    ),
-    radial-gradient(
-      circle at 90% 78%,
-      rgba(247, 197, 51, 0.08) 0%,
-      transparent 45%
-    ),
-    linear-gradient(
-      180deg,
-      rgba(5, 5, 5, 0.93) 0%,
-      rgba(5, 5, 5, 0.86) 38%,
-      rgba(5, 5, 5, 0.94) 78%,
-      rgba(5, 5, 5, 0.98) 100%
-    ),
-    url("images/hero-bg.jpg");
-
-  background-repeat: no-repeat;
-  background-position: center 30%, center 70%, center, center 38%;
-  background-size: cover;
-  background-color: var(--bg-black);
+  padding: 160px 0 100px;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  background: url("images/hero-bg.jfif") center right / cover no-repeat;
 }
 
+/* Pseudo-elemento para garantir contraste do texto, mesclando com o lado esquerdo claro da imagem */
 .hero-section::before {
   content: "";
   position: absolute;
   inset: 0;
+  background: linear-gradient(
+    to right,
+    rgba(250, 250, 250, 0.96) 0%,
+    rgba(250, 250, 250, 0.8) 45%,
+    transparent 100%
+  );
   z-index: 0;
   pointer-events: none;
-  background: radial-gradient(
-    ellipse at center,
-    transparent 45%,
-    rgba(5, 5, 5, 0.55) 85%,
-    rgba(5, 5, 5, 0.85) 100%
-  );
-}
-
-.hero-section .hero-grid {
-  position: relative;
-  z-index: 1;
 }
 
 .hero-grid {
   display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
-  gap: 50px;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 80px;
   align-items: center;
+  position: relative;
+  z-index: 1; /* Garante que o grid fique acima do overlay do background */
 }
 
-.hero-badge {
+.badge-tag {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  background-color: rgba(247, 197, 51, 0.08);
-  color: #f7c533;
-  padding: 8px 16px;
-  border-radius: 30px;
-  font-size: 13px;
-  font-weight: 600;
-  margin-bottom: 30px; 
-  border: 1px solid rgba(247, 197, 51, 0.45);
+  gap: 12px;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--ink-light);
+  margin-bottom: 32px;
+}
+
+.badge-dot {
+  width: 6px;
+  height: 6px;
+  background: var(--accent-gold);
+  border-radius: 50%;
 }
 
 .hero-title {
-  font-size: 3.2rem;
-  line-height: 1.15;
-  margin-bottom: 25px; 
-  color: #ffffff;
-}
-
-.hero-title span {
-  color: #f7c533;
+  margin-bottom: 24px;
 }
 
 .hero-description {
-  font-size: 1.125rem;
-  color: var(--text-muted);
-  margin-bottom: 45px; 
-  max-width: 540px;
+  font-size: clamp(1.1rem, 1.2vw, 1.25rem);
+  color: var(--ink-light);
+  margin-bottom: 48px;
+  max-width: 90%;
 }
 
 .hero-cta-group {
   display: flex;
   align-items: center;
-  gap: 20px;
-  flex-wrap: wrap;
+  gap: 32px;
 }
 
-.btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  padding: 16px 30px;
-  border-radius: 8px;
-  font-size: 16px;
-  font-weight: 600;
-  text-decoration: none;
-  transition: var(--transition);
+.hero-secondary-link {
+  font-weight: 500;
+  border-bottom: 1px solid var(--ink-dark);
+  padding-bottom: 4px;
 }
 
-.btn-primary {
-  background-color: var(--whatsapp-green);
-  color: #ffffff;
-  box-shadow: 0 4px 20px rgba(99, 94, 22, 0.4);
+.hero-secondary-link:hover {
+  color: var(--brand-primary);
+  border-color: var(--brand-primary);
 }
-
-.btn-primary:hover {
-  background-color: var(--whatsapp-green-hover);
-  transform: translateY(-2px);
-}
-
-.hero-link {
-  color: var(--text-main);
-  font-weight: 600;
-  text-decoration: none;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 14px 24px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 8px;
-  transition: var(--transition);
-}
-
-.hero-link:hover {
-  color: var(--bg-black);
-  background-color: var(--accent-gold);
-  border-color: var(--accent-gold);
-}
-
-
-/* =========================================================
-   FOTO DO ADVOGADO NO HERO
-   ========================================================= */
 
 .hero-image-wrapper {
-  display: flex;
-  justify-content: center;
+  position: relative;
 }
 
-.hero-image-card {
-  position: relative;
-  max-width: 440px;
-  width: 100%;
+.hero-image-frame { 
+  overflow: hidden;
+  aspect-ratio: 2.6/4;
+  box-shadow: var(--shadow-soft); /* Sombra suave no frame */
 }
 
 .lawyer-photo {
   width: 100%;
-  height: auto;
-  display: block;
+  height: 100%;
   object-fit: cover;
-  -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 65%, rgba(0,0,0,0) 98%);
-  mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 65%, rgba(0,0,0,0) 98%);
-  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1), filter 0.45s ease;
+  object-position: top;
 }
 
-.hero-image-card:hover .lawyer-photo {
-  transform: scale(1.025);
-  filter: brightness(1.05) contrast(1.02);
-}
-
-.hero-card-badge {
+.glass-badge {
   position: absolute;
-  bottom: 15px; 
-  left: 8%;
-  right: 8%;
-  background: rgba(255, 255, 255, 0.05); 
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  padding: 18px 20px;
-  border-radius: 16px;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6); 
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-top: 1px solid rgba(255, 255, 255, 0.25);
-  text-align: center;
-  z-index: 2;
+  bottom: 40px;
+  left: -40px;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(16px);
+  padding: 16px 24px;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-glass);
 }
 
-.hero-card-badge strong {
+.glass-badge strong {
   display: block;
-  font-size: 20px;
-  font-family: "Playfair Display", serif;
-  letter-spacing: 0.5px;
-  color: #ffffff;
+  font-size: 0.95rem;
+  color: var(--ink-dark);
 }
 
-.hero-card-badge span {
-  font-size: 11.5px;
-  color: var(--accent-gold);
-  letter-spacing: 0.5px;
-  text-transform: uppercase;
+.glass-badge span {
+  font-size: 0.8rem;
+  color: var(--ink-light);
 }
-
 
 /* =========================================================
-   IDENTIFICAÇÃO COM O PROBLEMA
+   PROBLEM SECTION
    ========================================================= */
-
-.identification-section {
-  padding: 60px 0;
-  background-color: var(--bg-black);
+.problem-section {
+  padding: 120px 0;
+  background: var(--bg-surface);
 }
 
-.id-card {
-  background-color: var(--bg-surface);
-  border-left: 5px solid var(--accent-color);
+.problem-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.problem-text-content h2 {
+  margin-bottom: 24px;
+}
+.problem-text-content p {
+  margin-bottom: 20px;
+  color: var(--ink-light);
+}
+.mt-4 {
+  margin-top: 32px;
+}
+
+.problem-image-box {
+  position: relative;
+}
+.problem-img {
+  aspect-ratio: 4/3;
+  object-fit: cover;
+  border-radius: var(--radius-sm);
+}
+
+.stat-overlay {
+  position: absolute;
+  bottom: -32px;
+  right: -32px;
+  background: var(--ink-dark);
+  color: #fff;
   padding: 40px;
-  border-radius: 0 12px 12px 0;
-  display: flex;
-  gap: 30px;
-  align-items: flex-start;
-  border-top: 1px solid var(--border-color);
-  border-right: 1px solid var(--border-color);
-  border-bottom: 1px solid var(--border-color);
+  max-width: 300px;
 }
 
-.id-icon {
-  font-size: 32px;
-  color: #f7c533;
-  background: rgba(247, 197, 51, 0.12);
-  padding: 20px;
+.stat-number {
+  display: block;
+  font-family: var(--font-serif);
+  font-size: 3.5rem;
+  color: var(--accent-gold-light);
+  line-height: 1;
+  margin-bottom: 12px;
+}
+
+.stat-text {
+  font-size: 0.9rem;
+  opacity: 0.9;
+  line-height: 1.5;
+}
+
+/* =========================================================
+   SERVICES / ÁREAS DE ATUAÇÃO
+   ========================================================= */
+.services-section {
+  padding: 120px 0;
+  background: var(--bg-alt);
+}
+.section-header p {
+  color: var(--ink-light);
+  margin-top: 16px;
+  font-size: 1.1rem;
+}
+
+.services-list {
+  margin-top: 80px;
+  max-width: 900px;
+  margin-inline: auto;
+}
+
+.service-row {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  padding: 32px 0;
+  border-bottom: 1px solid var(--ui-border);
+  transition: var(--transition-smooth);
+}
+.service-row:first-child {
+  border-top: 1px solid var(--ui-border);
+}
+
+.service-icon {
+  font-size: 1.8rem;
+  color: var(--accent-gold);
+  width: 60px;
+  flex-shrink: 0;
+}
+
+.service-info {
+  flex-grow: 1;
+}
+.service-info h3 {
+  font-size: 1.5rem;
+  margin-bottom: 8px;
+  transition: color 0.3s;
+}
+.service-info p {
+  color: var(--ink-light);
+  font-size: 0.95rem;
+  max-width: 600px;
+}
+
+.service-action {
+  width: 50px;
+  height: 50px;
+  border: 1px solid var(--ui-border);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
+  color: var(--ink-dark);
 }
 
-.id-text h2 {
-  font-size: 1.8rem;
-  margin-bottom: 12px;
+.service-row:hover .service-info h3 {
+  color: var(--brand-primary);
 }
-
-.id-text p {
-  color: var(--text-muted);
-  font-size: 1.05rem;
-  line-height: 1.7;
+.service-row:hover .service-action {
+  background: var(--brand-primary);
+  color: #fff;
+  border-color: var(--brand-primary);
+  transform: translateX(8px);
 }
-
 
 /* =========================================================
-   SERVIÇOS
+   METODOLOGIA / TIMELINE
    ========================================================= */
-
-.services-section {
-  padding: 80px 0;
-  background-color: #090d16;
+.process-section {
+  padding: 120px 0;
+  background: var(--bg-surface);
 }
 
-.section-header {
-  text-align: center;
-  max-width: 600px;
-  margin: 0 auto 50px auto;
-}
-
-.section-header h2 {
-  font-size: 2.5rem;
-  margin-bottom: 10px;
-}
-
-.section-header p {
-  color: var(--text-muted);
-  font-size: 1.05rem;
-}
-
-.services-grid {
+.timeline-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 30px;
+  gap: 48px;
+  margin-top: 80px;
 }
 
-.service-card {
-  background: var(--bg-surface);
-  padding: 35px 30px;
-  border-radius: 12px;
-  box-shadow: var(--box-shadow);
-  transition: var(--transition);
-  border: 1px solid var(--border-color);
+.timeline-step {
+  position: relative;
+  padding-top: 32px;
+  border-top: 1px solid var(--ui-border);
+}
+.timeline-step::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: 0;
+  width: 0;
+  height: 3px;
+  background: var(--brand-primary);
+  transition: width 0.6s ease;
+}
+.timeline-step:hover::before {
+  width: 100px;
 }
 
-.service-card:hover {
-  transform: translateY(-5px);
-  border-color: var(--accent-color);
+.step-indicator {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  color: var(--accent-gold);
+  margin-bottom: 16px;
 }
-
-.service-icon {
-  font-size: 28px;
-  color: #f7c533;
-  margin-bottom: 20px;
-}
-
-.service-card h3 {
-  font-size: 1.25rem;
+.timeline-step h3 {
   margin-bottom: 12px;
+  font-size: 1.4rem;
 }
-
-.service-card p {
-  color: var(--text-muted);
+.timeline-step p {
+  color: var(--ink-light);
   font-size: 0.95rem;
 }
-
 
 /* =========================================================
    DIFERENCIAIS
    ========================================================= */
-
 .differential-section {
-  padding: 90px 0;
-  background-color: var(--bg-black);
+  padding: 120px 0;
+  background: var(--bg-main);
 }
-
 .differential-grid {
   display: grid;
-  grid-template-columns: 1fr 1.1fr;
-  gap: 60px;
+  grid-template-columns: 0.8fr 1.2fr;
+  gap: 80px;
   align-items: center;
 }
-
-/* =========================================================
-   IMAGEM DOS DIFERENCIAIS (Formato Quadro Portrait - Sem Efeito)
-   ========================================================= */
-
-.differential-image {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 .diff-img {
-  width: 100%;
-  max-width: 360px; /* Deixa a imagem menor e mais proporcional */
-  height: 440px; /* Trava a altura para forçar o corte do teto */
-  display: block;
-  
-  /* O segredo do corte: preenche o espaço e foca na base da foto */
-  object-fit: cover; 
-  object-position: center bottom; 
-  
-  /* Deixa a foto parecendo um quadro/cartão elegante */
-  border-radius: 16px; 
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6); 
-  border: 1px solid rgba(255, 255, 255, 0.1); 
+  aspect-ratio: 3/4;
+  object-fit: cover;
+  border-radius: var(--radius-sm);
 }
-
-/* =========================================================
-   CONTEÚDO DOS DIFERENCIAIS
-   ========================================================= */
-
-.differential-content h2 {
-  font-size: 2.3rem;
-  margin-bottom: 15px;
-}
-
-.diff-subtitle {
-  color: var(--text-muted);
-  font-size: 1.05rem;
-  margin-bottom: 30px;
+.diff-lead {
+  font-size: 1.25rem;
+  color: var(--ink-base);
+  margin-bottom: 40px;
 }
 
 .diff-list {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px 32px;
 }
-
 .diff-list li {
-  display: flex;
-  gap: 15px;
-  align-items: flex-start;
-  padding: 12px 16px;
-  border-radius: 8px;
-  border: 1px solid transparent;
-  opacity: 0;
-  transform: translateX(-30px);
-  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  border-left: 2px solid var(--accent-gold-light);
+  padding-left: 20px;
 }
-
-.diff-list li.show-item {
-  opacity: 1;
-  transform: translateX(0);
-}
-
-.diff-list li:hover {
-  background-color: rgba(255, 255, 255, 0.03);
-  border-color: rgba(247, 197, 51, 0.15); 
-  transform: translateX(10px); 
-}
-
-.diff-list i {
-  color: var(--accent-gold);
-  font-size: 20px;
-  margin-top: 3px;
-  transition: all 0.3s ease;
-}
-
-.diff-list li:hover i {
-  transform: scale(1.2);
-  filter: drop-shadow(0 0 8px rgba(247, 197, 51, 0.6));
-}
-
 .diff-list strong {
   display: block;
-  color: #ffffff;
-  font-size: 1rem;
-  margin-bottom: 2px;
-  transition: color 0.3s ease;
+  font-family: var(--font-serif);
+  font-size: 1.2rem;
+  color: var(--ink-dark);
+  margin-bottom: 8px;
 }
-
-.diff-list li:hover strong {
-  color: var(--accent-gold);
-}
-
 .diff-list span {
-  color: var(--text-muted);
-  font-size: 0.9rem;
+  font-size: 0.95rem;
+  color: var(--ink-light);
 }
 
 /* =========================================================
-   CTA DE ALTA CONVERSÃO (Novo Design Glassmorphism)
+   FAQ / ACCORDION
    ========================================================= */
-
-.cta-section {
-  padding: 100px 0;
-  background: radial-gradient(circle at center, #111827 0%, var(--bg-black) 100%);
-  position: relative;
-  border-top: 1px solid rgba(255,255,255,0.05);
+.faq-section {
+  padding: 120px 0;
+  background: var(--bg-surface);
 }
-
-.cta-card {
-  background: linear-gradient(145deg, rgba(30, 41, 59, 0.4) 0%, rgba(15, 23, 42, 0.4) 100%);
-  border: 1px solid rgba(247, 197, 51, 0.2);
-  border-top: 1px solid rgba(247, 197, 51, 0.5);
-  box-shadow: 0 20px 40px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.1);
-  border-radius: 24px;
-  padding: 65px 40px;
-  text-align: center;
+.faq-accordion {
   max-width: 800px;
-  margin: 0 auto;
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  margin: 64px auto 0;
 }
-
-.cta-card h2 {
-  font-size: 2.8rem;
-  margin-bottom: 15px;
-  color: #ffffff;
+.faq-item {
+  border-bottom: 1px solid var(--ui-border);
 }
-
-.cta-card p {
-  color: #9ca3af;
-  font-size: 1.15rem;
-  margin-bottom: 40px;
-  max-width: 550px;
-  margin-inline: auto;
-}
-
-.btn-whatsapp-large {
-  background-color: var(--whatsapp-green);
-  color: white;
-  font-size: 18px;
-  padding: 18px 36px;
-  border-radius: 50px;
-  box-shadow: 0 8px 25px rgba(37, 211, 102, 0.3);
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  text-decoration: none;
-  font-weight: 600;
-  transition: var(--transition);
-}
-
-.btn-whatsapp-large:hover {
-  background-color: var(--whatsapp-green-hover);
-  transform: translateY(-3px);
-  box-shadow: 0 12px 30px rgba(37, 211, 102, 0.4);
-}
-
-
-/* =========================================================
-   RODAPÉ (Novo Layout Dividido)
-   ========================================================= */
-
-.site-footer {
-  background-color: #030508;
-  color: #9ca3af;
-  padding: 70px 0 30px 0;
-  font-size: 0.9rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-.footer-top {
+.faq-question {
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
-  flex-wrap: wrap;
-  gap: 40px;
-  padding-bottom: 40px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-  margin-bottom: 30px;
+  align-items: center;
+  padding: 24px 0;
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  color: var(--ink-dark);
+  cursor: pointer;
+  list-style: none;
 }
-
-.footer-brand {
-  max-width: 400px;
+.faq-question::-webkit-details-marker {
+  display: none;
 }
-
-.footer-brand .footer-logo {
-  height: 42px;
-  margin-bottom: 15px;
-  display: block;
-}
-
-.footer-name {
-  color: #f3f4f6;
-  font-weight: 600;
-  margin-bottom: 5px;
-  font-size: 1.05rem;
-}
-
-.oab-text {
+.faq-question i {
   color: var(--accent-gold);
-  font-size: 0.85rem;
+  transition: transform 0.3s;
+}
+.faq-item[open] .faq-question i {
+  transform: rotate(45deg);
+  color: var(--brand-primary);
+}
+.faq-answer {
+  padding-bottom: 24px;
+  color: var(--ink-light);
+  font-size: 1rem;
+  animation: sweep 0.3s ease-in-out;
 }
 
-/* Redes Sociais no Rodapé */
-.footer-social {
-  text-align: right;
+@keyframes sweep {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-.footer-social span {
-  display: block;
-  color: #e5e7eb;
-  margin-bottom: 12px;
-  font-weight: 500;
+/* =========================================================
+   CTA BANNER
+   ========================================================= */
+.cta-banner-section {
+  padding: 80px 0 120px;
+  background: var(--bg-surface);
+}
+.cta-banner-card {
+  background: var(--brand-primary);
+  border-radius: var(--radius-md);
+  padding: 80px 40px;
+  text-align: center;
+}
+.cta-banner-content {
+  max-width: 600px;
+  margin: 0 auto;
+}
+.cta-banner-content h2 {
+  color: #fff;
+  margin-bottom: 24px;
+}
+.cta-banner-content p {
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 40px;
+}
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+.site-footer {
+  background: var(--ink-dark);
+  color: rgba(255, 255, 255, 0.6);
+  padding: 80px 0 40px;
+}
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 60px;
+  padding-bottom: 60px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  margin-bottom: 40px;
+}
+.footer-logo {
+  height: 40px;
+  margin-bottom: 24px;
+  filter: brightness(0) invert(1);
+}
+.footer-firm-name {
+  color: #fff;
+  margin-bottom: 8px;
+}
+.footer-grid h4 {
+  color: #fff;
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 24px;
+}
+.footer-links-col ul {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.footer-links-col a:hover {
+  color: #fff;
 }
 
 .social-links {
   display: flex;
-  gap: 12px;
-  justify-content: flex-end;
+  gap: 16px;
 }
-
 .social-links a {
-  display: inline-flex;
+  width: 44px;
+  height: 44px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  display: flex;
   align-items: center;
   justify-content: center;
-  width: 46px;
-  height: 46px;
-  background: rgba(255, 255, 255, 0.05);
-  color: var(--accent-gold);
   border-radius: 50%;
-  font-size: 20px;
-  border: 1px solid rgba(247, 197, 51, 0.2);
-  transition: var(--transition);
-  text-decoration: none;
+  font-size: 1.2rem;
 }
-
 .social-links a:hover {
-  background: var(--accent-gold);
-  color: var(--bg-black);
-  transform: translateY(-4px);
-  box-shadow: 0 6px 15px rgba(247, 197, 51, 0.3);
+  background: #fff;
+  color: var(--ink-dark);
 }
-
 .footer-bottom {
   text-align: center;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+  font-size: 0.85rem;
 }
-
 .disclaimer {
+  margin-top: 16px;
+  opacity: 0.5;
   font-size: 0.75rem;
-  color: #6b7280;
   max-width: 800px;
-  margin: 0 auto;
+  margin-inline: auto;
 }
-
 
 /* =========================================================
-   BOTÃO FLUTUANTE WHATSAPP
+   FLOAT WHATSAPP
    ========================================================= */
-
 .floating-whatsapp {
   position: fixed;
-  bottom: 25px;
-  right: 25px;
-  background-color: var(--whatsapp-green);
-  color: white;
+  bottom: 32px;
+  right: 32px;
+  z-index: 90;
   width: 60px;
   height: 60px;
+  background: var(--whatsapp);
+  color: #fff;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 30px;
-  box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
-  z-index: 999;
-  transition: var(--transition);
-  animation: pulse-whatsapp 2s infinite;
-  text-decoration: none;
+  font-size: 32px;
+  box-shadow: 0 8px 24px rgba(37, 211, 102, 0.4);
 }
-
 .floating-whatsapp:hover {
-  transform: scale(1.1);
+  transform: scale(1.05);
 }
 
-
 /* =========================================================
-   ANIMAÇÃO WHATSAPP
+   ANIMATIONS
    ========================================================= */
-
-@keyframes pulse-whatsapp {
-  0% {
-    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.6);
-  }
-  70% {
-    box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
-  }
-  100% {
-    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
-  }
+.fade-up {
+  opacity: 0;
+  transform: translateY(40px);
+  transition:
+    opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1),
+    transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+}
+.fade-up.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.delay-1 {
+  transition-delay: 0.2s;
+}
+.delay-2 {
+  transition-delay: 0.4s;
 }
 
-
 /* =========================================================
-   RESPONSIVIDADE — TABLETS E MOBILE
+   RESPONSIVIDADE (MEDIA QUERIES)
    ========================================================= */
-
-@media (max-width: 992px) {
+@media (max-width: 1024px) {
   .hero-grid,
+  .problem-grid,
   .differential-grid {
     grid-template-columns: 1fr;
-    gap: 40px;
+    gap: 64px;
+  }
+
+  /* Ajuste no overlay para mobile/tablet mantendo a leitura em telas mais estreitas */
+  .hero-section::before {
+    background: linear-gradient(
+      to bottom,
+      rgba(250, 250, 250, 0.98) 0%,
+      rgba(250, 250, 250, 0.9) 60%,
+      rgba(250, 250, 250, 0.5) 100%
+    );
+  }
+
+  .hero-section {
+    padding: 140px 0 80px;
     text-align: center;
   }
+  .badge-tag {
+    margin-inline: auto;
+  }
   .hero-description {
-    margin: 0 auto 30px auto;
+    margin-inline: auto;
   }
   .hero-cta-group {
     justify-content: center;
   }
-  .services-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  .hero-title {
-    font-size: 2.6rem;
-  }
-  .id-card {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
-  .hero-image-card {
-    max-width: 440px;
+
+  .hero-image-frame {
+    max-width: 500px;
     margin: 0 auto;
   }
-}
-
-@media (max-width: 768px) {
-  .main-nav {
-      display: none;
-  }
-  .whatsapp-btn-header .btn-text {
-      display: none;
-  }
-  .whatsapp-btn-header {
-      padding: 10px;
-      border-radius: 50%;
-      width: 42px;
-      height: 42px;
-      justify-content: center;
+  .glass-badge {
+    left: 10%;
+    bottom: 20px;
   }
 
-  .services-grid {
+  .stat-overlay {
+    position: relative;
+    bottom: auto;
+    right: auto;
+    max-width: 100%;
+    margin-top: -40px;
+  }
+
+  .timeline-grid {
     grid-template-columns: 1fr;
+    gap: 32px;
   }
-  .hero-title {
-    font-size: 2.2rem;
-  }
-  .section-header h2,
-  .differential-content h2 {
-    font-size: 2rem;
-  }
-  .hero-section {
-    padding: 50px 0;
-  }
-  .lawyer-photo {
-    transform: none !important;
-  }
-  .hero-image-card:hover .lawyer-photo {
-    transform: none !important;
-  }
-  
-  /* Ajustes Mobile para Nova CTA e Rodapé */
-  .cta-card {
-    padding: 40px 20px;
-  }
-  .cta-card h2 {
-    font-size: 2.2rem;
-  }
-  .footer-top {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    gap: 30px;
-  }
-  .footer-social {
+
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
     text-align: center;
   }
   .social-links {
@@ -894,21 +947,41 @@ h6 {
   }
 }
 
-/* =========================================================
-   ACESSIBILIDADE
-   ========================================================= */
+@media (max-width: 768px) {
+  .main-nav,
+  .header-actions .btn {
+    display: none;
+  }
+  .mobile-toggle {
+    display: flex;
+  }
 
-@media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
+  .hero-cta-group {
+    flex-direction: column;
+    gap: 24px;
   }
-  *,
-  *::before,
-  *::after {
-    transition: none !important;
-    animation: none !important;
+  .hero-cta-group .btn {
+    width: 100%;
   }
-  .lawyer-photo {
-    transform: none !important;
+
+  .service-row {
+    flex-direction: column;
+    text-align: center;
+    gap: 16px;
+  }
+  .service-action {
+    transform: rotate(90deg);
+    margin-top: 16px;
+  }
+  .service-row:hover .service-action {
+    transform: rotate(90deg) translateY(-8px);
+  }
+
+  .diff-list {
+    grid-template-columns: 1fr;
+  }
+
+  .cta-banner-card {
+    padding: 48px 24px;
   }
 }

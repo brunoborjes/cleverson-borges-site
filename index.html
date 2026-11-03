@@ -1,373 +1,402 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt-BR">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Cleverson Borges | Advocacia Previdenciária e INSS em Juiz de Fora</title>
-    
-    <!-- Favicon e Ícones para Dispositivos Móveis -->
-    <link rel="icon" href="images/favicon1.ico" type="image/png" />
-    <link rel="apple-touch-icon" href="images/logo-branco-amarelo.png" />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cleverson Borges | Advocacia Previdenciária e INSS em Juiz de Fora</title>
 
-    <!-- Meta Tags de SEO -->
-    <meta
-      name="description"
-      content="Teve seu benefício negado pelo INSS ou enfrenta dificuldades? O escritório Cleverson Borges oferece análise individualizada e orientação jurídica especializada em Direito Previdenciário." />
-    <meta name="keywords" content="INSS, Direito Previdenciário, Benefício Negado, Aposentadoria, BPC LOAS, Advogado Previdenciário, Juiz de Fora" />
+  <link rel="icon" href="images/favicon1.ico" type="image/x-icon" />
+  <link rel="apple-touch-icon" href="images/monograma.png" />
 
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
-      rel="stylesheet" />
+  <meta name="description" content="Teve seu benefício negado pelo INSS? O escritório Cleverson Borges oferece análise técnica individualizada e atuação especializada em Direito Previdenciário em Juiz de Fora e região." />
+  <meta name="keywords" content="INSS, Benefício Negado, Aposentadoria, BPC LOAS, Advogado Previdenciário Juiz de Fora, Cleverson Borges" />
 
-    <!-- FontAwesome Icons -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;1,9..144,400&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- HEADER -->
+  <header class="site-header" id="site-header">
+    <div class="container header-container">
+      <a href="#" class="logo-wrapper" aria-label="Página Inicial">
+        <img src="images/logo.png" alt="Cleverson Borges Advocacia Previdenciária" class="logo-img" />
+      </a>
 
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <!-- Header / Navbar -->
-    <header class="site-header">
-      <div class="container header-container">
-        <a
-          href="#"
-          class="logo-wrapper"
-          aria-label="Página inicial - Cleverson Borges Advocacia Previdenciária">
-          <img
-            src="images/logo-branco-amarelo.png"
-            alt="Logo Cleverson Borges Advocacia Previdenciária especializada em INSS"
-            class="logo-img" />
+      <nav class="main-nav" aria-label="Navegação principal">
+        <ul>
+          <li><a href="#atuacao">Áreas de Atuação</a></li>
+          <li><a href="#como-funciona">Metodologia</a></li>
+          <li><a href="#diferenciais">Nossa Essência</a></li>
+          <li><a href="#faq">Dúvidas Frequentes</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <a href="#" class="btn btn-primary whatsapp-link" target="_blank" rel="noopener" aria-label="Atendimento rápido pelo WhatsApp">
+          <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
+          <span>Falar com Especialista</span>
         </a>
-        
-        <!-- Menu de Navegação -->
-        <nav class="main-nav" aria-label="Menu principal">
-            <ul>
-                <li><a href="#problemas">Áreas de Atuação</a></li>
-                <li><a href="#diferenciais">Por que nós?</a></li>
-            </ul>
-        </nav>
 
-        <div class="header-contact">
-          <a
-            href="#"
-            class="whatsapp-btn-header whatsapp-link"
-            target="_blank"
-            rel="noopener"
-            aria-label="Atendimento rápido via WhatsApp com especialista em INSS">
-            <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
-            <span class="btn-text">Atendimento Rápido</span>
-          </a>
-        </div>
+        <button class="mobile-toggle" id="mobile-menu-toggle" aria-label="Abrir menu de navegação" aria-expanded="false">
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+        </button>
       </div>
-    </header>
+    </div>
+  </header>
 
-    <!-- Hero Section -->
+  <!-- MENU MOBILE -->
+  <div class="mobile-drawer" id="mobile-drawer" aria-hidden="true">
+    <div class="drawer-overlay" id="drawer-overlay"></div>
+    <div class="drawer-content">
+      <div class="drawer-header">
+        <img src="images/logo.png" alt="Cleverson Borges Logo" class="drawer-logo" />
+        <button class="drawer-close" id="drawer-close" aria-label="Fechar menu">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+      <nav class="drawer-nav">
+        <ul>
+          <li><a href="#atuacao" class="drawer-link">Áreas de Atuação</a></li>
+          <li><a href="#como-funciona" class="drawer-link">Metodologia</a></li>
+          <li><a href="#diferenciais" class="drawer-link">Nossa Essência</a></li>
+          <li><a href="#faq" class="drawer-link">Dúvidas Frequentes</a></li>
+        </ul>
+      </nav>
+      <div class="drawer-footer">
+        <a href="#" class="btn btn-primary full-width whatsapp-link" target="_blank" rel="noopener">
+          <i class="fa-brands fa-whatsapp"></i> Atendimento WhatsApp
+        </a>
+        <p class="drawer-oab">Cleverson Borges &bull; OAB/MG</p>
+      </div>
+    </div>
+  </div>
+
+  <main>
+    <!-- HERO SECTION (Agora com o novo Background) -->
     <section class="hero-section">
       <div class="container hero-grid">
-        <div class="hero-content">
-          <span class="hero-badge"
-            ><i class="fa-solid fa-scale-balanced" aria-hidden="true"></i> Especialista em Direito
-            Previdenciário</span
-          >
+        <div class="hero-content fade-up">
+          <div class="badge-tag">
+            <span class="badge-dot"></span>
+            Direito Previdenciário em Juiz de Fora e Região
+          </div>
+
           <h1 class="hero-title">
-            Seu benefício foi negado pelo <span>INSS</span>?
+            O seu benefício foi <em>negado</em> ou <em>travado</em> no INSS?
           </h1>
+
           <p class="hero-description">
-            Não se preocupe. Nossa equipe realiza uma análise técnica e
-            individualizada do seu caso para orientar você sobre os próximos
-            passos de forma clara e segura.
+            Não aceite a primeira negativa sem uma verificação criteriosa. Conduzimos uma análise técnica e aprofundada do seu histórico para recuperar e garantir o que é seu por direito.
           </p>
+
           <div class="hero-cta-group">
-            <a
-              href="#"
-              class="btn btn-primary whatsapp-link"
-              target="_blank"
-              rel="noopener"
-              aria-label="Iniciar conversa no WhatsApp para analisar seu caso no INSS">
-              <i class="fa-brands fa-whatsapp" aria-hidden="true"></i> Quero analisar meu caso
+            <a href="#" class="btn btn-primary btn-pulse whatsapp-link" target="_blank" rel="noopener">
+              <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
+              <span>Analisar Meu Caso</span>
             </a>
-            <a href="#problemas" class="hero-link"
-              >Conheça os casos atendidos <i class="fa-solid fa-arrow-down" aria-hidden="true"></i
-            ></a>
+            <a href="#atuacao" class="hero-secondary-link">
+              Conhecer especialidades
+            </a>
           </div>
         </div>
-        <div class="hero-image-wrapper">
-          <div class="hero-image-card">
-            <img
-              src="images/advogado.png"
-              alt="Dr. Cleverson Borges, advogado especialista em Direito Previdenciário"
-              class="lawyer-photo" />
-            <div class="hero-card-badge">
-              <strong>Dr. Cleverson Borges</strong>
-              <span>OAB / Especialista Previdenciário</span>
-            </div>
+
+        <div class="hero-image-wrapper fade-up delay-1">
+          <div class="hero-image-frame">
+            <!-- A imagem editada do advogado (sem fundo quadriculado) -->
+            <img src="images/adv-cleverson.jfif" alt="Dr. Cleverson Borges" class="lawyer-photo" />
+          </div>
+          <div class="glass-badge">
+            <strong>Dr. Cleverson Borges</strong>
+            <span>Especialista em INSS &bull; OAB/MG</span>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Seção de Identificação com o Problema -->
-    <section class="identification-section">
-      <div class="container">
-        <div class="id-card">
-          <div class="id-icon">
-            <i class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i>
-          </div>
-          <div class="id-text">
-            <h2>O INSS negou ou travou o seu benefício?</h2>
-            <p>
-              Ter um pedido negado ou demorado no INSS não significa que você
-              perdeu o seu direito. Muitas vezes, o erro está na documentação ou
-              na análise administrativa inicial. Uma orientação jurídica
-              especializada pode esclarecer exatamente quais medidas podem ser
-              tomadas para reverter essa situação.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Principais Problemas Atendidos -->
-    <section id="problemas" class="services-section">
-      <div class="container">
-        <div class="section-header">
-          <h2>Como podemos ajudar você</h2>
+    <!-- IDENTIFICAÇÃO DO PROBLEMA -->
+    <section class="problem-section">
+      <div class="container problem-grid">
+        <div class="problem-text-content fade-up">
+          <span class="section-kicker">Reversão de Negativas</span>
+          <h2>Por que o INSS indefere pedidos legítimos?</h2>
+          <div class="editorial-line"></div>
           <p>
-            Atuação focada nas principais demandas junto à Previdência Social
+            O sistema administrativo do INSS frequentemente nega pedidos devido a falhas formais na documentação, ausência de cruzamento de dados de contribuição ou perícias médicas superficiais.
           </p>
+          <p>
+            Uma decisão desfavorável no aplicativo "Meu INSS" <strong>não é a palavra final</strong>. Através de recursos administrativos bem fundamentados ou intervenção judicial, é plenamente possível corrigir o equívoco e resgatar o benefício com os devidos retroativos.
+          </p>
+          <a href="#" class="btn btn-outline whatsapp-link mt-4" target="_blank" rel="noopener">
+            Esclarecer Dúvida Sobre Meu Pedido
+          </a>
         </div>
 
-        <div class="services-grid">
-          <!-- Card 1 -->
-          <div class="service-card">
-            <div class="service-icon">
-              <i class="fa-solid fa-file-circle-xmark" aria-hidden="true"></i>
-            </div>
-            <h3>Benefício Negado ou Indeferido</h3>
-            <p>
-              Auxílio na reversão de negativas indevidas e entrada com medidas
-              administrativas ou judiciais cabíveis.
-            </p>
-          </div>
-
-          <!-- Card 2 -->
-          <div class="service-card">
-            <div class="service-icon">
-              <i class="fa-solid fa-hand-holding-heart" aria-hidden="true"></i>
-            </div>
-            <h3>BPC / LOAS</h3>
-            <p>
-              Orientação e entrada para o Benefício de Prestação Continuada
-              destinado a idosos e pessoas com deficiência.
-            </p>
-          </div>
-
-          <!-- Card 3 -->
-          <div class="service-card">
-            <div class="service-icon">
-              <i class="fa-solid fa-user-clock" aria-hidden="true"></i>
-            </div>
-            <h3>Aposentadorias</h3>
-            <p>
-              Planejamento e requerimento de aposentadoria por idade, tempo de
-              contribuição, especial e rural.
-            </p>
-          </div>
-
-          <!-- Card 4 -->
-          <div class="service-card">
-            <div class="service-icon">
-              <i class="fa-solid fa-bed-pulse" aria-hidden="true"></i>
-            </div>
-            <h3>Auxílio por Incapacidade</h3>
-            <p>
-              Suporte jurídico para afastamentos temporários ou permanentes
-              decorrentes de problemas de saúde ou acidentes.
-            </p>
-          </div>
-
-          <!-- Card 5 -->
-          <div class="service-card">
-            <div class="service-icon">
-              <i class="fa-solid fa-calculator" aria-hidden="true"></i>
-            </div>
-            <h3>Revisão de Benefício</h3>
-            <p>
-              Análise detalhada do cálculo do seu benefício atual para verificar
-              possíveis correções e aumentos de valor.
-            </p>
-          </div>
-
-          <!-- Card 6 -->
-          <div class="service-card">
-            <div class="service-icon">
-              <i class="fa-solid fa-circle-question" aria-hidden="true"></i>
-            </div>
-            <h3>Dúvidas e Direitos</h3>
-            <p>
-              Orientação segura para quem não sabe qual benefício solicitar ou
-              quais documentos são obrigatórios.
-            </p>
+        <div class="problem-image-box fade-up delay-1">
+          <img src="images/inss-fachada.jpg" alt="Fachada do INSS" class="problem-img" />
+          <div class="stat-overlay">
+            <span class="stat-number">80%</span>
+            <span class="stat-text">dos indeferimentos possuem erros passíveis de reversão jurídica.</span>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Por que escolher o escritório -->
+    <!-- ÁREAS DE ATUAÇÃO (Lista Editorial) -->
+    <section id="atuacao" class="services-section">
+      <div class="container">
+        <div class="section-header text-center fade-up">
+          <span class="section-kicker">Especialidades</span>
+          <h2>Soluções Jurídicas Sob Medida</h2>
+          <p>Atuação incisiva e focada na defesa integral dos segurados da Previdência Social.</p>
+        </div>
+
+        <div class="services-list fade-up delay-1">
+          <article class="service-row">
+            <div class="service-icon"><i class="fa-solid fa-file-circle-xmark"></i></div>
+            <div class="service-info">
+              <h3>Benefício Negado ou Indeferido</h3>
+              <p>Reversão técnica de negativas indevidas através de recursos e ações judiciais exigindo retroativos.</p>
+            </div>
+            <a href="#" class="service-action whatsapp-link" target="_blank" aria-label="Saiba mais sobre benefício negado">
+              <i class="fa-solid fa-arrow-right"></i>
+            </a>
+          </article>
+
+          <article class="service-row">
+            <div class="service-icon"><i class="fa-solid fa-hands-holding-child"></i></div>
+            <div class="service-info">
+              <h3>BPC / LOAS</h3>
+              <p>Assessoria completa para o benefício assistencial destinado a idosos ou pessoas com deficiência de baixa renda.</p>
+            </div>
+            <a href="#" class="service-action whatsapp-link" target="_blank" aria-label="Saiba mais sobre BPC LOAS">
+              <i class="fa-solid fa-arrow-right"></i>
+            </a>
+          </article>
+
+          <article class="service-row">
+            <div class="service-icon"><i class="fa-solid fa-briefcase"></i></div>
+            <div class="service-info">
+              <h3>Planejamento e Aposentadorias</h3>
+              <p>Estratégia e concessão de aposentadoria por idade, tempo de contribuição, especial e rural.</p>
+            </div>
+            <a href="#" class="service-action whatsapp-link" target="_blank" aria-label="Saiba mais sobre aposentadorias">
+              <i class="fa-solid fa-arrow-right"></i>
+            </a>
+          </article>
+
+          <article class="service-row">
+            <div class="service-icon"><i class="fa-solid fa-kit-medical"></i></div>
+            <div class="service-info">
+              <h3>Auxílio por Incapacidade</h3>
+              <p>Defesa robusta para obtenção de auxílio-doença ou aposentadoria por incapacidade permanente.</p>
+            </div>
+            <a href="#" class="service-action whatsapp-link" target="_blank" aria-label="Saiba mais sobre auxílio doença">
+              <i class="fa-solid fa-arrow-right"></i>
+            </a>
+          </article>
+
+          <article class="service-row">
+            <div class="service-icon"><i class="fa-solid fa-calculator"></i></div>
+            <div class="service-info">
+              <h3>Revisão de Benefício e CNIS</h3>
+              <p>Auditoria do cálculo do seu benefício e acerto de vínculos para aumentar o valor recebido ou evitar perdas.</p>
+            </div>
+            <a href="#" class="service-action whatsapp-link" target="_blank" aria-label="Saiba mais sobre revisão">
+              <i class="fa-solid fa-arrow-right"></i>
+            </a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- METODOLOGIA (Timeline) -->
+    <section id="como-funciona" class="process-section">
+      <div class="container">
+        <div class="section-header text-center fade-up">
+          <span class="section-kicker">Metodologia</span>
+          <h2>Como Conduzimos a Sua Defesa</h2>
+          <p>Um processo estruturado para garantir transparência e agilidade, sem juridiquês.</p>
+        </div>
+
+        <div class="timeline-grid fade-up delay-1">
+          <div class="timeline-step">
+            <div class="step-indicator">01</div>
+            <h3>Contato e Triagem</h3>
+            <p>Envio da sua dúvida ou carta de indeferimento de forma direta e segura via WhatsApp.</p>
+          </div>
+          <div class="timeline-step">
+            <div class="step-indicator">02</div>
+            <h3>Auditoria Documental</h3>
+            <p>Estudo minucioso do seu histórico de contribuições, laudos médicos e extratos do INSS.</p>
+          </div>
+          <div class="timeline-step">
+            <div class="step-indicator">03</div>
+            <h3>Estratégia e Execução</h3>
+            <p>Ajuizamento da ação ou recurso perfeito para o seu caso, com atualizações constantes do progresso.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DIFERENCIAIS -->
     <section id="diferenciais" class="differential-section">
       <div class="container differential-grid">
-        <div class="differential-image">
-          <img
-            src="images/advogado_02.png"
-            alt="Dr. Cleverson Borges sorrindo em atendimento humanizado no escritório"
-            class="diff-img" />
+        <div class="diff-image-column fade-up">
+          <img src="images/advogado_02.png" alt="Atendimento focado na transparência" class="diff-img" />
         </div>
-        <div class="differential-content">
-          <h2>Por que contar com o escritório Cleverson Borges?</h2>
-          <p class="diff-subtitle">
-            Compromisso com a clareza, ética e o respeito aos direitos de cada
-            segurado.
+
+        <div class="diff-content-column fade-up delay-1">
+          <span class="section-kicker">Nossa Essência</span>
+          <h2>Por que confiar na nossa atuação?</h2>
+          <div class="editorial-line"></div>
+          <p class="diff-lead">
+            Unimos o mais alto rigor técnico a um atendimento verdadeiramente acolhedor.
           </p>
 
           <ul class="diff-list">
             <li>
-              <i class="fa-solid fa-circle-check" aria-hidden="true"></i>
-              <div>
-                <strong>Atendimento Personalizado</strong>
-                <span
-                  >Cada segurado possui uma história única que merece atenção
-                  dedicada.</span
-                >
-              </div>
+              <strong>Atendimento Individualizado</strong>
+              <span>Cada trajetória previdenciária é singular e exige uma arquitetura jurídica exclusiva, do início ao fim.</span>
             </li>
             <li>
-              <i class="fa-solid fa-circle-check" aria-hidden="true"></i>
-              <div>
-                <strong>Análise Individual de Cada Caso</strong>
-                <span
-                  >Estudo minucioso dos documentos e histórico de
-                  contribuições.</span
-                >
-              </div>
+              <strong>Linguagem Translúcida</strong>
+              <span>Traduzimos a complexidade da lei. Você entenderá a realidade do seu benefício de forma objetiva.</span>
             </li>
             <li>
-              <i class="fa-solid fa-circle-check" aria-hidden="true"></i>
-              <div>
-                <strong>Orientação Jurídica Especializada</strong>
-                <span
-                  >Foco absoluto e profundo conhecimento nas regras do
-                  INSS.</span
-                >
-              </div>
+              <strong>Foco Exclusivo em INSS</strong>
+              <span>Nossa dedicação integral ao Direito Previdenciário garante domínio das teses e jurisprudências mais recentes.</span>
             </li>
             <li>
-              <i class="fa-solid fa-circle-check" aria-hidden="true"></i>
-              <div>
-                <strong>Transparência Durante o Processo</strong>
-                <span
-                  >Informações claras em cada etapa, sem termos técnicos
-                  confusos.</span
-                >
-              </div>
-            </li>
-            <li>
-              <i class="fa-solid fa-circle-check" aria-hidden="true"></i>
-              <div>
-                <strong>Atendimento Humanizado</strong>
-                <span
-                  >Acolhimento e respeito no momento em que você mais
-                  precisa.</span
-                >
-              </div>
+              <strong>Presencial & Digital</strong>
+              <span>Recebemos você em nosso escritório em Juiz de Fora, ou conduzimos tudo digitalmente para todo o Brasil.</span>
             </li>
           </ul>
         </div>
       </div>
     </section>
 
-    <!-- CTA de Alta Conversão -->
-    <section class="cta-section">
+    <!-- FAQ -->
+    <section id="faq" class="faq-section">
       <div class="container">
-        <div class="cta-card">
-          <h2>Não sabe se tem direito ao benefício?</h2>
-          <p>
-            Converse com nossa equipe e descubra quais são os próximos passos para
-            o seu caso.
-          </p>
-          <a
-            href="#"
-            class="btn btn-whatsapp-large whatsapp-link"
-            target="_blank"
-            rel="noopener"
-            aria-label="Falar com especialista pelo WhatsApp sobre benefícios do INSS">
-            <i class="fa-brands fa-whatsapp" aria-hidden="true"></i> Falar pelo WhatsApp
-          </a>
+        <div class="section-header text-center fade-up">
+          <span class="section-kicker">Esclarecimentos</span>
+          <h2>Dúvidas Frequentes</h2>
+        </div>
+
+        <div class="faq-accordion fade-up delay-1">
+          <details class="faq-item" name="faq">
+            <summary class="faq-question">
+              O que devo fazer se o meu benefício for negado?
+              <i class="fa-solid fa-plus"></i>
+            </summary>
+            <div class="faq-answer">
+              <p>O primeiro passo é não realizar um novo pedido imediatamente. Guarde a carta de indeferimento e permita que façamos uma análise técnica. Muitas vezes, um recurso bem fundamentado ou uma ação judicial resolve o problema e garante o pagamento dos meses atrasados.</p>
+            </div>
+          </details>
+
+          <details class="faq-item" name="faq">
+            <summary class="faq-question">
+              Preciso ir presencialmente ao escritório?
+              <i class="fa-solid fa-plus"></i>
+            </summary>
+            <div class="faq-answer">
+              <p>Não. Apesar de oferecermos estrutura presencial em Juiz de Fora/MG, operamos de maneira 100% digital. Você pode enviar fotos e documentos com total segurança pelo WhatsApp, permitindo que atendamos clientes de todo o país.</p>
+            </div>
+          </details>
+
+          <details class="faq-item" name="faq">
+            <summary class="faq-question">
+              Quanto tempo demora a análise do meu caso?
+              <i class="fa-solid fa-plus"></i>
+            </summary>
+            <div class="faq-answer">
+              <p>Realizamos uma triagem inicial imediata. Assim que recebemos sua documentação básica, emitimos um parecer jurídico com a viabilidade e a estratégia recomendada no menor prazo possível.</p>
+            </div>
+          </details>
+
+          <details class="faq-item" name="faq">
+            <summary class="faq-question">
+              Quais são os requisitos para o BPC / LOAS?
+              <i class="fa-solid fa-plus"></i>
+            </summary>
+            <div class="faq-answer">
+              <p>O benefício é destinado a idosos (65 anos ou mais) ou pessoas com deficiência de qualquer idade, desde que comprovem condição de vulnerabilidade social (baixa renda familiar) e impossibilidade de prover o próprio sustento.</p>
+            </div>
+          </details>
         </div>
       </div>
     </section>
 
-    <!-- Rodapé -->
-    <footer class="site-footer">
+    <!-- CTA BANNER -->
+    <section class="cta-banner-section fade-up">
       <div class="container">
-        <div class="footer-top">
-          <div class="footer-brand">
-            <a href="#" class="logo-wrapper footer-logo-wrapper" aria-label="Início da página">
-              <img
-                src="images/logo-branco-amarelo.png"
-                alt="Logo Cleverson Borges Advocacia Previdenciária"
-                class="footer-logo" />
+        <div class="cta-banner-card">
+          <div class="cta-banner-content">
+            <h2>Seu direito não pode esperar.</h2>
+            <p>Evite que prazos expirem ou que seu processo fique estagnado. Fale agora com nossa equipe para uma avaliação preliminar do seu cenário previdenciário.</p>
+            <a href="#" class="btn btn-outline-light whatsapp-link" target="_blank" rel="noopener">
+              Iniciar Atendimento via WhatsApp
             </a>
-            <p class="footer-name">
-              Cleverson Borges - Sociedade Individual de Advocacia
-            </p>
-            <p class="oab-text">Especializado em Direito Previdenciário</p>
           </div>
-          
-          <div class="footer-social">
-            <span>Acompanhe nas redes sociais</span>
-            <div class="social-links">
-              <!-- Link Instagram -->
-              <a href="https://www.instagram.com/cleversonborges.adv/" target="_blank" rel="noopener" aria-label="Visite o perfil do Instagram do escritório Cleverson Borges">
-                <i class="fa-brands fa-instagram" aria-hidden="true"></i>
-              </a>
-              <!-- Link WhatsApp -->
-              <a href="#" class="whatsapp-link" target="_blank" rel="noopener" aria-label="Entre em contato via WhatsApp">
-                <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <div class="footer-bottom">
-          <p>
-            &copy; 2026 Cleverson Borges Advocacia. Todos os direitos
-            reservados.
-          </p>
-          <p class="disclaimer">
-            Este site possui caráter informativo, em conformidade com as
-            diretrizes da OAB. Nenhuma informação aqui contida constitui
-            promessa de concessão de benefício.
-          </p>
         </div>
       </div>
-    </footer>
+    </section>
+  </main>
 
-    <!-- Botão Flutuante do WhatsApp -->
-    <a
-      href="#"
-      class="floating-whatsapp whatsapp-link"
-      target="_blank"
-      rel="noopener"
-      aria-label="Botão flutuante para atendimento imediato via WhatsApp">
-      <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
-    </a>
+  <!-- RODAPÉ -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="images/logo-branco-amarelo.png" alt="Cleverson Borges Advocacia" class="footer-logo" />
+          <p class="footer-firm-name">Cleverson Borges &bull; Sociedade Individual de Advocacia</p>
+          <p class="footer-oab">OAB/MG &bull; Especialistas em Direito Previdenciário</p>
+        </div>
 
-    <!-- Custom JavaScript -->
-    <script src="script.js"></script>
-  </body>
+        <div class="footer-links-col">
+          <h4>Navegação Institucional</h4>
+          <nav aria-label="Navegação de rodapé">
+            <ul>
+              <li><a href="#atuacao">Especialidades</a></li>
+              <li><a href="#como-funciona">Metodologia</a></li>
+              <li><a href="#diferenciais">Nossa Essência</a></li>
+              <li><a href="#faq">Central de Dúvidas</a></li>
+            </ul>
+          </nav>
+        </div>
+
+        <div class="footer-social-col">
+          <h4>Conexão & Contato</h4>
+          <div class="social-links">
+            <a href="https://www.instagram.com/cleversonborges.adv/" target="_blank" rel="noopener" aria-label="Instagram">
+              <i class="fa-brands fa-instagram"></i>
+            </a>
+            <a href="#" class="whatsapp-link" target="_blank" rel="noopener" aria-label="WhatsApp">
+              <i class="fa-brands fa-whatsapp"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 Cleverson Borges Advocacia. Todos os direitos reservados.</p>
+        <p class="disclaimer">
+          Este portal possui caráter estritamente informativo, alinhado ao Provimento nº 205/2021 do Conselho Federal da OAB. Nenhum conteúdo publicado garante a concessão automática de benefícios.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- FLOAT WHATSAPP -->
+  <a href="#" class="floating-whatsapp whatsapp-link fade-up delay-2" target="_blank" rel="noopener" aria-label="Atendimento no WhatsApp">
+    <i class="fa-brands fa-whatsapp"></i>
+  </a>
+
+  <script src="script.js"></script>
+</body>
 </html>

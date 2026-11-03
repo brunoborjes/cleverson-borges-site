@@ -1,135 +1,105 @@
-const WHATSAPP_LINK = "https://wa.me/5532920007640?text=Olá,%20gostaria%20de%20falar%20com%20um%20especialista%20sobre%20meu%20caso%20no%20INSS.";
+/**
+ * CLEVERSON BORGES ADVOCACIA PREVIDENCIÁRIA
+ * Arquitetura de Interação UI/UX e Performance
+ */
+
+const WHATSAPP_PHONE = "5532920007640"; // Ajuste conforme perfil local/Juiz de Fora
+const WHATSAPP_MSG = encodeURIComponent("Olá! Gostaria de agendar uma análise técnica sobre Direito Previdenciário.");
+const WHATSAPP_URL = `https://wa.me/${WHATSAPP_PHONE}?text=${WHATSAPP_MSG}`;
 
 document.addEventListener("DOMContentLoaded", () => {
-  // ---- Configuração dos Botões do WhatsApp ----
-  const whatsappButtons = document.querySelectorAll(".whatsapp-link");
-  whatsappButtons.forEach(button => {
-    button.setAttribute("href", WHATSAPP_LINK);
+  
+  // 1. Configuração Global de Links WhatsApp
+  document.querySelectorAll(".whatsapp-link").forEach(link => {
+    link.href = WHATSAPP_URL;
   });
 
-  // ---- Header que some suavemente ao rolar e reaparece ao voltar ao topo ----
-  const header = document.querySelector(".site-header");
-
-  if (header) {
-    // Distância de scroll (em px) até o header ficar totalmente transparente
-    const FADE_DISTANCE = 220;
-    // Opacidade mínima (não deixamos ir a 0 puro, para não "sumir" de forma abrupta)
-    const MIN_OPACITY = 0;
-
-    let ticking = false;
-
-    const updateHeaderOpacity = () => {
-      const scrollY = window.scrollY || window.pageYOffset;
-
-      // Calcula a opacidade proporcional ao quanto já rolou a página
-      let opacity = 1 - scrollY / FADE_DISTANCE;
-      opacity = Math.max(MIN_OPACITY, Math.min(1, opacity));
-
-      header.style.opacity = opacity;
-
-      // Evita que o header capture cliques quando estiver praticamente invisível
-      header.classList.toggle("is-faded", opacity < 0.05);
-
-      ticking = false;
-    };
-
-    // requestAnimationFrame evita recalcular a opacidade mais vezes do que o necessário
-    window.addEventListener(
-      "scroll",
-      () => {
-        if (!ticking) {
-          window.requestAnimationFrame(updateHeaderOpacity);
-          ticking = true;
-        }
-      },
-      { passive: true }
-    );
-
-    // Garante o estado correto caso a página já carregue com scroll (ex: F5 no meio da página)
-    updateHeaderOpacity();
-  }
-
-  // ---- Efeito Cascata (Stagger) na Lista de Diferenciais ----
-  const diffItems = document.querySelectorAll(".diff-list li");
-
-  if (diffItems.length > 0) {
-    const observerOptions = {
-      root: null,
-      rootMargin: "0px 0px -10% 0px", // Dispara um pouco antes de chegar ao centro da tela
-      threshold: 0.1 
-    };
-
-    const diffObserver = new IntersectionObserver((entries, observer) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          // Pega o índice do item atual em relação à lista completa
-          const index = Array.from(diffItems).indexOf(entry.target);
-          
-          // Aplica um pequeno atraso matemático (delay) para criar o efeito escada/cascata
-          setTimeout(() => {
-            entry.target.classList.add("show-item");
-          }, index * 150); // 150ms de diferença entre o surgimento de um item e o próximo
-
-          // Para de observar depois que a animação rodar a primeira vez
-          observer.unobserve(entry.target);
-        }
-      });
-    }, observerOptions);
-
-    diffItems.forEach((item) => {
-      diffObserver.observe(item);
-    });
-  }
-});
-
-// ---- Rolagem suave e lenta para os links do menu ----
-const internalLinks = document.querySelectorAll('a[href^="#"]');
-
-internalLinks.forEach(link => {
-  link.addEventListener('click', function(e) {
-    const targetId = this.getAttribute('href');
-    
-    // Se o link for apenas "#" (como a logo ou topo), ignora o scroll personalizado
-    if (targetId === '#' || targetId === '') return;
-
-    const targetSection = document.querySelector(targetId);
-
-    if (targetSection) {
-      e.preventDefault(); // Impede o salto instantâneo padrão
-
-      // Pega a altura atual do header para a página não rolar para debaixo dele
-      const header = document.querySelector('.site-header');
-      const headerHeight = header ? header.offsetHeight : 0;
-      
-      // Calcula a distância exata até a seção (dando 20px de "respiro")
-      const targetPosition = targetSection.getBoundingClientRect().top + window.pageYOffset - headerHeight - 20;
-      
-      const startPosition = window.pageYOffset;
-      const distance = targetPosition - startPosition;
-      
-      // TEMPO DA ANIMAÇÃO: 1500 = 1.5 segundos.
-      // Se quiser que seja ainda mais lento, pode mudar para 2000.
-      const duration = 1500; 
-      let start = null;
-
-      // Função para o movimento fluido (Ease In-Out)
-      function animation(currentTime) {
-        if (start === null) start = currentTime;
-        const timeElapsed = currentTime - start;
-        
-        const ease = timeElapsed < duration / 2
-          ? 4 * Math.pow(timeElapsed / duration, 3)
-          : 1 - Math.pow(-2 * timeElapsed / duration + 2, 3) / 2;
-
-        window.scrollTo(0, startPosition + distance * ease);
-
-        if (timeElapsed < duration) {
-          requestAnimationFrame(animation);
-        }
-      }
-
-      // Inicia a animação
-      requestAnimationFrame(animation);
+  // 2. Header State (Glassmorphism Dinâmico)
+  const header = document.getElementById("site-header");
+  const handleScroll = () => {
+    if (window.scrollY > 50) {
+      header.classList.add("scrolled");
+    } else {
+      header.classList.remove("scrolled");
     }
+  };
+  window.addEventListener("scroll", handleScroll, { passive: true });
+  handleScroll();
+
+  // 3. Mobile Drawer Navigation
+  const toggleBtn = document.getElementById("mobile-menu-toggle");
+  const drawer = document.getElementById("mobile-drawer");
+  const closeBtn = document.getElementById("drawer-close");
+  const overlay = document.getElementById("drawer-overlay");
+  const drawerLinks = document.querySelectorAll(".drawer-link");
+
+  const toggleDrawer = (state) => {
+    if (state) {
+      drawer.classList.add("open");
+      drawer.setAttribute("aria-hidden", "false");
+      document.body.style.overflow = "hidden"; // Previne scroll ao fundo
+    } else {
+      drawer.classList.remove("open");
+      drawer.setAttribute("aria-hidden", "true");
+      document.body.style.overflow = "";
+    }
+  };
+
+  if(toggleBtn) toggleBtn.addEventListener("click", () => toggleDrawer(true));
+  if(closeBtn) closeBtn.addEventListener("click", () => toggleDrawer(false));
+  if(overlay) overlay.addEventListener("click", () => toggleDrawer(false));
+  drawerLinks.forEach(link => link.addEventListener("click", () => toggleDrawer(false)));
+
+  // 4. Smooth Scroll Nativo + Compensação do Header Fixo
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener("click", function(e) {
+      const targetId = this.getAttribute("href");
+      if (targetId === "#" || targetId === "") return;
+      
+      const targetSection = document.querySelector(targetId);
+      if (targetSection) {
+        e.preventDefault();
+        const headerHeight = header.offsetHeight;
+        const targetPos = targetSection.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+        
+        window.scrollTo({
+          top: targetPos,
+          behavior: "smooth"
+        });
+      }
+    });
   });
+
+  // 5. Accordion Behavior exclusivo (Deixa apenas 1 aberto, usando HTML5 <details>)
+  const faqItems = document.querySelectorAll(".faq-item");
+  faqItems.forEach(item => {
+    item.addEventListener("toggle", (e) => {
+      if (item.open) {
+        faqItems.forEach(otherItem => {
+          if (otherItem !== item) otherItem.removeAttribute("open");
+        });
+      }
+    });
+  });
+
+  // 6. Scroll Reveal Animation (Intersection Observer)
+  const observerOptions = {
+    root: null,
+    rootMargin: "0px 0px -10% 0px",
+    threshold: 0.1
+  };
+
+  const revealObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("is-visible");
+        observer.unobserve(entry.target); // Anima apenas uma vez para não sobrecarregar
+      }
+    });
+  }, observerOptions);
+
+  document.querySelectorAll(".fade-up").forEach(el => {
+    revealObserver.observe(el);
+  });
+
 });
